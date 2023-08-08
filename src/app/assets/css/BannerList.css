@@ -1,0 +1,46 @@
+.btns{
+    border-radius: 30px;
+    background-color:#6973FE;
+    display: flex;
+    
+}
+
+.main {
+    width: 90vw;
+    height: 100vh;
+}
+  
+.box-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+
+  .right-content {
+    flex: 1;
+    text-align: center;
+  }
+
+  .left-content {
+    flex: 1;
+    text-align: center;
+
+  }
+  
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30%;
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  

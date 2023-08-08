@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.footer{
+    background-image: url('/src/app/assets/img/users/Footer.jpg');
+    min-height: 60vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+
+h4{
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.footer-text-p{
+  padding-top: 20px;
+  margin-top: 20px;
+ font-weight: 400;
+ font-size: 16px;
+}
+
+.main-content{
+  text-align: left;
+}
+  
+.sub-content{
+ font: weight 5px;
+ line-height: 30px;
+ 
+}
+
+
+.footer-text{
+  justify-content: space-evenly;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  flex-direction: row;
+  color: white;
+}
+
+.social-icons{
+
+  color: white;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Assuming you have a class name "bottom-line" for the <div> element */
+.bottom-text h4{
+  color: white;
+  font: weight 5px;
+  line-height: 30px;
+  display: inline;
+  margin-right: 30px;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .footer{
+    display: flex;
+    
+  }
+  .footer-text
+  {
+    margin-top: 20%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-text h4,
+  .social-icons h4 {
+    margin-bottom: 10px;
+  }
+
+  .social-icons {
+    margin-bottom: 10px;
+  }
+
+  .bottom-text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  .footer{
+    display: flex;
+  }
+  .footer-text
+  {
+    margin-top: 45%;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 20px;
+  }
+  .footer-text h4,
+  .social-icons h4 {
+    margin-bottom: 10px;
+    margin-right: 20px;
+  }
+
+  .social-icons {
+    margin-bottom: 10px;
+      margin-right: 20px;
+  }
+
+  .bottom-text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .footer{
+    display: flex;
+  }
+  .footer-text
+  {
+    margin-top: 55%;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 20px;
+  }
+  .footer-text h4,
+  .social-icons h4 {
+    margin-bottom: 10px;
+    margin-right: 20px;
+  }
+
+  .social-icons {
+    margin-bottom: 10px;
+      margin-right: 20px;
+  }
+
+  .bottom-text {
+    font-size: 10px;
+  }
+}
