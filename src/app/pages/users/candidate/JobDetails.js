@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Button,
@@ -18,11 +18,9 @@ import {
 import { LocationOn, WorkOutline, Search } from "@mui/icons-material";
 import ArrowDropDown from "@mui/icons-material/KeyboardArrowDown";
 import DrawerComp from "../../../partials/Drawer";
-import Footer from"../../../partials/Footer";
-
-/*========== CSS FILE ============ */
-
-import "../../../assets/css/JobDetails.css";
+import Footer from "../../../partials/Footer";
+import "./JobDetails.css";
+import Axios from "../../../utils/axios";
 
 const searchBarStyles = {
   display: "flex",
@@ -125,6 +123,25 @@ const JobDetails = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallScreen = useMediaQuery("(max-width: 960px)");
+
+  // const [loading, setLoading] = useState(false);
+  //   const [data, setData] = useState([]);
+
+  //   const JobDetails = async () => {
+  //   setLoading(true);
+  //     try {
+  //       const response = await Axios.post("/");
+  //       setData(response.data.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     } finally{
+  //       setLoading(false);
+  //      }
+  //   };
+
+  //   useEffect(() => {
+  //     JobDetails();
+  //   }, []);
 
   return (
     <>
@@ -936,7 +953,7 @@ const JobDetails = () => {
       </Grid>
 
       {/*============ FOOTER ==============*/}
-      <Footer/>
+      <Footer />
     </>
   );
 };

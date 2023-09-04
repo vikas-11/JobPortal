@@ -17,7 +17,7 @@ import {
   } from "@mui/material";
 
 import { Row, Column, FooterLink, Heading, Headings } from "./FooterStyle";
-import "../assets/css/Footer.css";
+import "./Footer.css";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookRoundedIcon from "@mui/icons-material/Facebook";

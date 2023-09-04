@@ -1,0 +1,18 @@
+p{
+    color: rgb(10, 10, 10);
+    font-size: 20px;
+    font-weight: 200;
+    
+}
+
+@media (max-width: 960px) {
+   Button{
+    display: none;
+   }
+   .heading{
+    display: none;
+   }
+   .btn{
+    display: none;
+   }
+  }

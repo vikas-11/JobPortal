@@ -1,0 +1,30 @@
+    *{
+    margin: 0;
+    padding: 0;
+    }
+
+  
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+    .btn{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-evenly; 
+    }
+
+ 
+@media (max-width: 768px) {
+    .heading {
+      font-size: 10px;
+    }
+    .image img {
+        max-width: 100%;
+        height: auto;
+      }
+  }
+  

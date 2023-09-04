@@ -1,0 +1,61 @@
+
+/* =============== EditRecruiterDetails  =================== */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.btn{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly; 
+}
+
+.text{
+  font-weight: "600";
+  text-align: "left";
+  color: "#6973FE";
+  margin-top: "30px";
+  margin-bottom: "10px";
+  line-height: "70px";
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .profile-text {
+    flex: 1;
+  }
+  
+  .profile-image {
+    max-width: 50px;
+    max-height: 50px;
+    border: 15px solid #7797FE; 
+    border-radius: 50%; 
+  }
+  
+  @media (max-width: 960px) {
+    .profile-image{
+      max-width: 30px;
+      max-height: 30px;
+      border: 10px solid #7797FE; 
+      border-radius: 50%; 
+    }
+  }
+
+  @media (max-width: 600px) {
+    .profile-image{
+      display: none;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  

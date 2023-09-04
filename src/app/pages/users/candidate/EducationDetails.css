@@ -1,0 +1,216 @@
+/* ============== EDUCATIONAL DETAILS 1 ,EDUCATIONAL DETAILS 2, REGISTER LAST PAGE ============== */
+
+.btn{
+    display: flex;
+    gap: 20px; 
+}
+
+.chips{
+  display: flex;
+  gap: 20px; 
+}
+
+.BottomBtn{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+p{
+  font-size: 20px;
+}
+
+h4{
+  font-weight: 500;
+}
+
+/* ============== Vertical Lines ============== */
+.list-wrapper {
+  position:relative;
+  margin-left: 2rem;
+}
+.list-item-wrapper {
+  margin-top:5rem;
+  position:relative;
+}
+
+/* ------- EducationalDetails1 Bullets ------- */
+
+.list-bullet1 {
+  float:left;
+  margin-right:4rem;
+  background:#6973FE;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+.list-bullet2 {
+  float:left;
+  margin-right:4rem;
+  background: #CCFFCC;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+.list-bullet3 {
+  float:left;
+  margin-right:4rem;
+  background: #6973FE;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+.list-bullet4 {
+  float:left;
+  margin-right:4rem;
+  background:#6973FE;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+/* ------- EducationalDetails2 Bullets ------- */
+
+.list-bulletED2 {
+  float:left;
+  margin-right:4rem;
+  background: #6973FE;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+.list-bulletED3 {
+  float:left;
+  margin-right:4rem;
+  background: #CCFFCC;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+.list-bullet4 {
+  float:left;
+  margin-right:4rem;
+  background:#6973FE;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+/* ------- RegisterLastPage Bullets ------- */
+
+.list-bulletRLP2 {
+  float:left;
+  margin-right:4rem;
+  background: #6973FE;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+.list-bulletRLP3 {
+  float:left;
+  margin-right:4rem;
+  background: #6973FE;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+.list-bulletRLP4 {
+  float:left;
+  margin-right:4rem;
+  background:#CCFFCC;
+  height:30px;
+  width:30px;
+  line-height:30px;
+  border-radius:100px;
+  font-weight:700;
+  color:white;
+  text-align:center;
+}
+
+
+.list-item {
+  display:table-row;
+  vertical-align:middle;
+}
+.list-title {
+    font-weight:400;
+    font-size: 20px;
+}
+.list-text {
+    font-weight:400;
+}
+
+.line {
+  background:black;
+  z-index:-1;
+  width:1px;
+  height:100%;
+  position:absolute;
+  left:15px;
+}
+
+/* ========= Resposive Screen ============ */
+@media (max-width: 960px) {
+  p{
+    font-size: 1rem;
+  }
+
+  h4{
+    font-size: 0.8rem;
+  }
+
+  .list-item .list-title {
+    display: none;
+  }
+
+  .btn{
+    gap: 5px; 
+  }
+ 
+}
+
+

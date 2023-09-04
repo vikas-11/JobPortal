@@ -1,0 +1,23 @@
+
+.cards-container {
+    margin-top: 10px;
+    width: 90vw;
+    height: auto;
+    justify-content: center;
+    margin-left: 20px;
+  }
+
+  .gridHeading{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+    
+
+    
+
+  
+    
+   

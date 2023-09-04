@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import { Container } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
-import { DataGrid } from "@mui/x-data-grid";
-import { DataGridPro } from "@mui/x-data-grid-pro";
-import { useDemoData } from "@mui/x-data-grid-generator";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -27,18 +23,15 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import ContactEmergencyOutlinedIcon from "@mui/icons-material/ContactEmergencyOutlined";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
-
 import Card from "@mui/material/Card";
-
 import CardContent from "@mui/material/CardContent";
-
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import MUIDataTable from "mui-datatables";
-
 import Navbar from "../../../partials/Navbar2";
-import "../../../assets/css/Recruiter.css";
-
+import "./Recruiter.css";
+import Axios from "../../../utils/axios";
 const drawerWidth = 240;
+
 
 
 const cardData = [
@@ -254,6 +247,25 @@ const ResponsiveDrawer = styled(MuiDrawer, {
 export default function ActiveRecruiter() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+
+  // const AdminAllRecruiter = async () => {
+  // setLoading(true);
+  //   try {
+  //     const response = await Axios.get("/");
+  //     setData(response.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally{
+  //     setLoading(false);
+  //    }
+  // };
+
+  // useEffect(() => {
+  //   AdminAllRecruiter();
+  // }, []);
 
   return (
     

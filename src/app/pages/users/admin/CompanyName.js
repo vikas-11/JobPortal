@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Button,
@@ -13,13 +13,13 @@ import {
   Grid,
   TextField,
   Paper,
-  Container,
 } from "@mui/material";
 import { LocationOn, WorkOutline, Search } from "@mui/icons-material";
 import DrawerComp from "../../../partials/Drawer";
-import "../../../assets/css/Footer.css";
-import Footer from"../../../partials/Footer";
-// -------------------------style objects ---------------------------//
+import "../../../partials/Footer.css";
+import Footer from "../../../partials/Footer";
+import Axios from "../../../utils/axios";
+
 const layoutStyles = {
   width: "auto",
   height: "auto",
@@ -142,6 +142,26 @@ const CompanyNames = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallScreen = useMediaQuery("(max-width: 960px)");
+
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+
+  // const CompanyName = async () => {
+  // setLoading(true);
+  //   try {
+  //     const response = await Axios.get("/");
+  //     setData(response.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally{
+  //     setLoading(false);
+  //    }
+  // };
+
+  // useEffect(() => {
+  //   CompanyName();
+  // }, []);
+
   return (
     <>
       <AppBar
@@ -437,7 +457,7 @@ const CompanyNames = () => {
       </Box>
 
       {/*============ FOOTER ==============*/}
-      <Footer/>
+      <Footer />
     </>
   );
 };

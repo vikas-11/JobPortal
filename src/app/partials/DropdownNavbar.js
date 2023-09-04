@@ -14,7 +14,7 @@ import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
 
-import "../assets/css/Navbar2.css";
+import "../../../src/app/partials/Navbar2.css";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

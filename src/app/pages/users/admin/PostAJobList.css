@@ -1,0 +1,46 @@
+
+  .full-container {
+    width: 100vw; 
+    
+  }
+
+  span{
+    font-size: 18px;
+  }
+   
+  p{
+    font-size: 14px
+  }
+
+ .main{
+    border: 1px solid #6973FE;
+    margin: 10px;
+    border-radius: 20px;
+    width: 350px;
+    height: auto;
+ }
+
+ .box2, .box3, .box4, .box5, .box6{
+   margin: 10px;
+ }
+
+ .pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+ }
+
+ @media screen and (max-width: 768px) {
+  .heading{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pagination{
+    display: none;
+  }
+}
+
+
+

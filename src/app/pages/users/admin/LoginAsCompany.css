@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.agreement{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+span{
+    color: #6973FE;
+}
+
+.btn{
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ========= Resposive Screen ============ */
+@media (max-width: 960px) {
+    .agreement{
+        font-size: 1rem;
+    }
+  }

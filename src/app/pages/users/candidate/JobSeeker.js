@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Button,
@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import { LocationOn, WorkOutline, Search } from "@mui/icons-material";
 import DrawerComp from "../../../partials/Drawer";
+import Axios from "../../../utils/axios";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
@@ -23,9 +24,7 @@ import LocationCityOutlinedIcon from "@mui/icons-material/LocationCityOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import Footer from"../../../partials/Footer";
-/*========== CSS FILE ============ */
-
-import "../../../assets/css/JobSeeker.css";
+import "./JobSeeker.css";
 
 /*========== Images ============ */
 import img1 from "../../../assets/img/users/User.jpg";
@@ -33,7 +32,9 @@ import img2 from "../../../assets/img/users/main.jpg";
 import img3 from "../../../assets/img/users/Slack.jpg";
 import img4 from "../../../assets/img/users/Samsung.jpg";
 
-// -------------------------style objects ---------------------------//
+
+
+
 const image1Styles = {
   width: "117px",
   height: "117px",
@@ -144,6 +145,26 @@ const JobSeeker = () => {
   console.log(isMatch);
   const isSmallScreen = useMediaQuery("(max-width: 960px)");
   const isExtraSmallScreen = useMediaQuery("(max-width: 600px)");
+
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+
+  // const JobSeeker = async () => {
+  // setLoading(true);
+  //   try {
+  //     const response = await Axios.post("/");
+  //     setData(response.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally{
+  //     setLoading(false);
+  //    }
+  // };
+
+  // useEffect(() => {
+  //   JobSeeker();
+  // }, []);
+
   return (
     <>
       <AppBar
@@ -359,7 +380,7 @@ const JobSeeker = () => {
           {/*============ COLUMN 2 ==============*/}
           <Grid item md={isSmallScreen ? 12 : 6}>
             <Box>
-              <div className="block1CLM2">.</div>
+              <div className="block1CLM2"></div>
             </Box>
 
             <Grid container spacing={2}>

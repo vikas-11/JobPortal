@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Pagination from "@mui/material/Pagination";
@@ -20,11 +20,13 @@ import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlin
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import Button from "@mui/material/Button";
-
 import Navbar from "../../../partials/Navbar2";
-
-import "../../../assets/css/BannerList.css";
+import "./BannerList.css";
 import rectangle from "../../../assets/img/users/Rectangle.jpg";
+import Axios from "../../../utils/axios";
+
+
+
 const drawerWidth = 280;
 
 const styles = {
@@ -150,6 +152,25 @@ const ResponsiveDrawer = styled(MuiDrawer, {
 export default function HomeBannerList() {
   const [open, setOpen] = React.useState(false);
 
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+
+  // const HomeBannerList = async () => {
+  // setLoading(true);
+  //   try {
+  //     const response = await Axios.get("/");
+  //     setData(response.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally{
+  //     setLoading(false);
+  //    }
+  // };
+
+  // useEffect(() => {
+  //   HomeBannerList();
+  // }, []);
+  
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar

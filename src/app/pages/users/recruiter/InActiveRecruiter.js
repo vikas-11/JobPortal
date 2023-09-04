@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import { DataGrid } from "@mui/x-data-grid";
-import { DataGridPro } from "@mui/x-data-grid-pro";
-import { useDemoData } from "@mui/x-data-grid-generator";
-
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -26,10 +23,12 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import MUIDataTable from "mui-datatables";
-
 import Navbar from "../../../partials/Navbar2";
-import "../../../assets/css/Recruiter.css";
+import "./InActiveRecruiter.css";
+import Axios from "../../../utils/axios";
 const drawerWidth = 280;
+
+
 
 
 const columns = [
@@ -220,6 +219,25 @@ export default function InActiveRecruiter() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+
+  // const InActiveRecruiter = async () => {
+  // setLoading(true);
+  //   try {
+  //     const response = await Axios.get("/");
+  //     setData(response.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally{
+  //     setLoading(false);
+  //    }
+  // };
+
+  // useEffect(() => {
+  //   InActiveRecruiter();
+  // }, []);
+  
   return (
     <Box sx={{ display: "flex" }}>
     <AppBar

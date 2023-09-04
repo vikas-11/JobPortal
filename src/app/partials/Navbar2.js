@@ -14,7 +14,7 @@ import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
 
-import "../assets/css/Navbar2.css";
+import "./Navbar2.css";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -48,7 +48,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-
 
 
 export default function PrimarySearchAppBar() {

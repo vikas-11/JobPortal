@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
 import jobseekerImage from "../../../assets/img/users/jobseeker.jpg";
 import recruiterImage from "../../../assets/img/recruiter/recruiter.jpg";
@@ -6,8 +6,28 @@ import header from "../../../assets/img/users/Vector1.jpg";
 import footer from "../../../assets/img/users/Vector2.jpg";
 
 import "../../../assets/css/RecruiterJobSeeker.css";
+import Axios from "../../../utils/axios";
+const RecruiterJobSeeker = () => {
 
-const Recruiter = () => {
+    // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+
+  // const fetchRecruiterJobSeeker = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await Axios.get("/");
+  //     setData(response.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchRecruiterJobSeeker();
+  // }, []);
+
   return (
     <>
       <div className="recruiter">
@@ -76,4 +96,4 @@ const Recruiter = () => {
   );
 };
 
-export default Recruiter;
+export default RecruiterJobSeeker;

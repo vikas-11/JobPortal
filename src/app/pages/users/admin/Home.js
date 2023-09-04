@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Button,
@@ -11,20 +11,18 @@ import {
   Box,
   Grid,
   TextField,
-
   Chip,
 } from "@mui/material";
 import { LocationOn, WorkOutline, Search } from "@mui/icons-material";
-import DrawerComp from "../../../partials/Drawer";
 import ArrowBackIosSharpIcon from "@mui/icons-material/ArrowBackIosSharp";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 
 /*========== CSS FILE ============ */
-import "../../../assets/css/Home.css";
+import "./Home.css";
 import Footer from "../../../partials/Footer";
-
+import Navbar from "../../../partials/Navbar";
 /*========== IMAGES ============ */
 import img1 from "../../../assets/img/users/Mahindra.jpg";
 import img5 from "../../../assets/img/users/Accenture.jpg";
@@ -32,6 +30,8 @@ import img4 from "../../../assets/img/users/Capgemini.jpg";
 import img2 from "../../../assets/img/users/Cognizant.jpg";
 import img6 from "../../../assets/img/users/Hewlett_Packard.jpg";
 import img3 from "../../../assets/img/users/Virtual_employe.jpg";
+
+import Axios from "../../../utils/axios";
 
 const searchBarStyles = {
   display: "flex",
@@ -58,7 +58,7 @@ const iconContainerStyles = {
 };
 
 const labelStyles = {
-  color: "white", // Set the label color to white
+  color: "white", 
 };
 
 const buttonStyles = {
@@ -83,75 +83,28 @@ const Header = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallScreen = useMediaQuery("(max-width: 960px)");
+
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+
+  // const fetchHome = async () => {
+  //   try {
+  //     const response = await Axios.get("/");
+  //     setData(response.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchHome();
+  // }, []);
+
   return (
     <>
       <div className="home-container">
-        <AppBar
-          sx={{
-            background: "transparent",
-            boxShadow: "none",
-            position: "static",
-            height: "70px",
-          }}
-        >
-          <Toolbar>
-            <DrawerComp sx={{ marginRight: "auto" }} />
-            <Typography
-              sx={{
-                font: "Readex Pro",
-                fontWeight: "400",
-                fontSize: "2rem",
-                marginRight: "auto",
-              }}
-            >
-              Smart Job
-            </Typography>
-            {isMatch ? (
-              <></>
-            ) : (
-              <>
-                <Tabs
-                  sx={{
-                    font: "Poppins",
-                    fontWeight: "400",
-                    marginRight: "auto",
-                  }}
-                  textColor="white"
-                  value={value}
-                  onChange={(e, value) => setValue(value)}
-                >
-                  <Tab label="Jobs" />
-                  <Tab label="Companies" />
-                  <Tab label="Services" />
-                  <Tab label="User Profile" />
-                </Tabs>
-                <Button
-                  sx={{
-                    marginRight: "auto",
-                    borderRadius: "20px",
-                    color: "white",
-                    borderColor: "white",
-                  }}
-                  variant="outlined"
-                >
-                  Register
-                </Button>
-                <Button
-                  sx={{
-                    marginRight: "auto",
-                    borderRadius: "20px",
-                    color: "white",
-                    borderColor: "white",
-                  }}
-                  variant="outlined"
-                >
-                  Login
-                </Button>
-              </>
-            )}
-          </Toolbar>
-        </AppBar>
-
+        
+        <Navbar/>
         <Box
           sx={{
             textAlign: "left",

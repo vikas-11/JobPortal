@@ -1,9 +1,3 @@
-.user{
-    background-image: url(../img/users/User.jpg);
-
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 .text{
     text-align: center;
@@ -48,7 +42,7 @@ h5{
   }
 
   .block1CLM2{
-    background-image: url("../img/users/main.jpg");
+    background-image: url("../../../assets/img/users/main.jpg");
     min-height: 30vh;
     background-size: cover;
     background-position: center;

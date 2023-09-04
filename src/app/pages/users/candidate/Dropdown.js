@@ -15,7 +15,7 @@ import { Drawer } from "@mui/material";
 
 import Navbar from "../../../partials/DropdownNavbar";
 
-import "../../../assets/css/Dropdown.css";
+import "./Dropdown.css";
 
 
 
