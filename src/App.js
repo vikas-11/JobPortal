@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 // ---------------- TASK 1 ---------------- //
 
 // import Home from "../src/app/pages/users/admin/Home";
-import JobDetails from "../src/app/pages/users/candidate/JobDetails";
+// import JobDetails from "../src/app/pages/users/candidate/JobDetails";
 // import CompanyName from "../src/app/pages/users/admin/CompanyName";
 // import JobSeeker from "../src/app/pages/users/candidate/JobSeeker";
 // import Footer from "../src/app/partials/Footer";
@@ -85,7 +85,7 @@ function App() {
          {/* <Route path="/success" element={<Success />}></Route> */}
          {/* <Route path="/failed" element={<Failed />}></Route> */}
 
-        {/*-------------- Vijay Sir Pages --------------*/}
+        {/*-------------- Authentication Pages --------------*/}
 
          {/* <Route path="/adminlogin" element={<AdminLogin />}></Route> */}
          {/* <Route path="/userlogin" element={<UserLogin />}></Route> */}
