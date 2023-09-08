@@ -49,24 +49,24 @@ import colors from "../src/app/utils/colors";
 // import UserRegister from "../src/app/pages/auth/register/userregister/Register";
 
 // ---------------- Ayush Sir Admin Pages ---------------- //
-import Active from "../src/app/pages/users/admin/Active";
-import Inactive from "../src/app/pages/users/admin/Inactive";
-import Dashboard from "../src/app/pages/users/admin/Dashboard";
-import Homebanner from "../src/app/pages/users/admin/Homebanner";
-import EditRecruiter from "../src/app/pages/users/admin/EditRecruiter";
-import Offerbanner from "../src/app/pages/users/admin/Offerbanner";
-import Domain from "../src/app/pages/users/admin/Domain";
-import Subdomain from "../src/app/pages/users/admin/Subdomain";
-import Pop from "../src/app/pages/users/admin/Pop";
-import PostedJob from "../src/app/pages/users/admin/PostedJob";
-import PostedJobCard from "../src/app/pages/users/admin/PostedJobCard";
-import Candidate from "../src/app/pages/users/admin/Candidate";
-import ActiveCandidate from "../src/app/pages/users/admin/ActiveCandidate";
-import InactiveCandidate from "../src/app/pages/users/admin/InactiveCandidate";
-import Tablebanner from "../src/app/pages/users/admin/common/Tablebanner";
-import PendingPostedJob from "../src/app/pages/users/admin/Pendingpostedjob";
-import ActivePostedJob from "../src/app/pages/users/admin/Activepostedjob";
-import InactivePostedJob from "../src/app/pages/users/admin/Inactivepostedjob";
+// import Active from "../src/app/pages/users/admin/Active";
+// import Inactive from "../src/app/pages/users/admin/Inactive";
+// import Dashboard from "../src/app/pages/users/admin/Dashboard";
+// import Homebanner from "../src/app/pages/users/admin/Homebanner";
+// import EditRecruiter from "../src/app/pages/users/admin/EditRecruiter";
+// import Offerbanner from "../src/app/pages/users/admin/Offerbanner";
+// import Domain from "../src/app/pages/users/admin/Domain";
+// import Subdomain from "../src/app/pages/users/admin/Subdomain";
+// import Pop from "../src/app/pages/users/admin/Pop";
+// import PostedJob from "../src/app/pages/users/admin/PostedJob";
+// import PostedJobCard from "../src/app/pages/users/admin/PostedJobCard";
+// import Candidate from "../src/app/pages/users/admin/Candidate";
+// import ActiveCandidate from "../src/app/pages/users/admin/ActiveCandidate";
+// import InactiveCandidate from "../src/app/pages/users/admin/InactiveCandidate";
+// import Tablebanner from "../src/app/pages/users/admin/common/Tablebanner";
+// import PendingPostedJob from "../src/app/pages/users/admin/Pendingpostedjob";
+// import ActivePostedJob from "../src/app/pages/users/admin/Activepostedjob";
+// import InactivePostedJob from "../src/app/pages/users/admin/Inactivepostedjob";
 
 function App() {
   return (
@@ -105,19 +105,16 @@ function App() {
         {/* <Route path="/editprofilecompany" element={<EditProfileCompany />}></Route> */}
         {/* <Route path="/success" element={<Success />}></Route> */}
         {/* <Route path="/failed" element={<Failed />}></Route> */}
-
-<<<<<<< HEAD
+  
         {/*-------------- Vijay Sir Pages --------------*/}
         {/* <Route path="/adminlogin" element={<AdminLogin />}></Route> */}
         {/* <Route path="/userlogin" element={<UserLogin />}></Route> */}
         {/* <Route path="/adminregister" element={<AdminRegister />}></Route> */}
         {/* <Route path="/userregister" element={<UserRegister />}></Route> */}
-=======
-        {/*-------------- Authentication Pages --------------*/}
->>>>>>> origin/main
+
 
         {/*-------------- Ayush Sir Admin Pages --------------*/}
-        <Route path='/active' element={<Active/>}></Route>    DONE
+        {/* <Route path='/active' element={<Active/>}></Route>    DONE
         <Route path='/inactive' element={<Inactive/>}></Route>   DONE
         <Route path='/dashboard' element={<Dashboard/>}></Route>  DONE 
         <Route path='/homebanner' element={<Homebanner/>}></Route>
@@ -134,7 +131,7 @@ function App() {
 
         <Route path='/pendingjob' element={<PendingPostedJob Postedtitle = {"Pending"} buttonColor={"#FFC804"}/>}></Route>  
         <Route path='/activejob' element={<ActivePostedJob Postedtitle = {"Active"} buttonColor={"#CCFFCC"}/>}></Route>  DONE
-        <Route path='/inactivejob' element={<InactivePostedJob Postedtitle = {"Inactive"} buttonColor={"#FF0000C9"}/>}></Route>   DONE
+        <Route path='/inactivejob' element={<InactivePostedJob Postedtitle = {"Inactive"} buttonColor={"#FF0000C9"}/>}></Route>   DONE   */}
       </Routes>
     </>
   );
