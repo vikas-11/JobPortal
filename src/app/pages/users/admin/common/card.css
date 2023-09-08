@@ -1,0 +1,12 @@
+.image{
+  margin-top: -2.5rem;
+  margin-left: -2rem;
+  display: flex;
+  /* flex-direction: row; */
+}
+.heading{
+  margin-left: 3rem;
+  margin-top: -5rem;
+  font-size: x-large;
+}
+

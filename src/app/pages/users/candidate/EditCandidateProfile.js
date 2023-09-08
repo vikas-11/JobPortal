@@ -85,7 +85,7 @@ export default function EditCandidateProfile() {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <Sidebar />
+      <Sidebar/>
 
       <Grid>
         <Divider

@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Register.css";
 import {
   TextField,
@@ -28,23 +28,37 @@ import Axios from "../../../../utils/axios";
 
 const Register = () => {
   const [checked, setChecked] = React.useState(false);
-  
+
   // const [response, setResponse] = useState(null);
   // const [error, setError] = useState(null);
 
-  
   // const userResigter = async()=>{
   //   try{
   //     const response = await Axios.post('/createussers');
   //     setResponse(response.data.data);
   //   } catch(error){
   //     console.log(error);
-  //   } 
+  //   }
   // }
 
   // useEffect(()=>{
   //   userResigter();
   // })
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("user-info")) {
+      // history.pushState("/add")
+    }
+  }, []);
+
+  function RegisterData() {
+    console.log("data",name);
+  }
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -65,20 +79,8 @@ const Register = () => {
       phone: Yup.string().required("Phone number is required"),
       password: Yup.string().required("Password is required"),
     }),
-    onSubmit: async  (values) => {
-      console.log(values);
-      // try {
-      //   const headers = {
-      //     // Add your authentication headers here
-      //     Authorization: "Bearer YOUR_ACCESS_TOKEN", // Example access token
-      //     // Other headers if needed
-      //   };
-
-      //   const response = await Axios.post("/createussers", values , { headers });
-      //   console.log("Response from API:", response.data);
-      // } catch (error) {
-      //   console.error("Error submitting form:", error);
-      // }
+    onSubmit: (values) => {
+      RegisterData();
     },
   });
 
@@ -109,7 +111,7 @@ const Register = () => {
               <Grid item xs={12}>
                 <img
                   src={Group4}
-                  alt= "no preview"
+                  alt="no preview"
                   style={{
                     width: "100%",
                     height: "188.64px",
@@ -167,7 +169,11 @@ const Register = () => {
                   variant="h4"
                   component="p"
                   // sx={{ margin: "0 120px",  }}
-                  sx={{ textAlign: "center", fontSize: "20px" , color:colors.black}}
+                  sx={{
+                    textAlign: "center",
+                    fontSize: "20px",
+                    color: colors.black,
+                  }}
                 >
                   Supported formats- pdf, doc, docx, csv, rtf, txt files File
                   size should not exceed 5 MB.
@@ -216,6 +222,7 @@ const Register = () => {
                       InputProps={{ sx: { borderRadius: "33px" } }}
                       value={formik.values.name}
                       onChange={formik.handleChange}
+                      
                       error={formik.touched.name && Boolean(formik.errors.name)}
                       helperText={formik.touched.name && formik.errors.name}
                       style={{ marginInline: "10%" }}
@@ -336,13 +343,18 @@ const Register = () => {
                           />
                         }
                         label={
-                          <Typography variant="body2" style={{ color: colors.black }}>
+                          <Typography
+                            variant="body2"
+                            style={{ color: colors.black }}
+                          >
                             By registering, you agree to{" "}
                             <span style={{ color: colors.background }}>
-                              terms & conditions{" "} 
+                              terms & conditions{" "}
                             </span>
-                            &{" "} 
-                            <span style={{ color: colors.background }}>privacy policy</span>
+                            &{" "}
+                            <span style={{ color: colors.background }}>
+                              privacy policy
+                            </span>
                             .
                           </Typography>
                         }
@@ -352,8 +364,8 @@ const Register = () => {
 
                   <Grid item xs={12} style={{ textAlign: "center" }}>
                     <Button
-                      // type="submit"
-                      type="button"
+                      type="submit"
+                      // type="button"
                       endIcon={<ArrowForwardIcon />}
                       sx={{
                         border: "1px",
@@ -368,7 +380,6 @@ const Register = () => {
                         margin: "0 auto", // Center the button horizontally
                       }}
                       onClick={formik.handleSubmit}
-                      
                     >
                       Continue
                     </Button>
@@ -430,7 +441,7 @@ const Register = () => {
                     <Typography
                       variant="h6"
                       component="p"
-                      sx={{ fontSize: "20px" ,color:colors.black}}
+                      sx={{ fontSize: "20px", color: colors.black }}
                     >
                       Already Have An Account?
                     </Typography>
