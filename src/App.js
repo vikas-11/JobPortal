@@ -106,11 +106,15 @@ function App() {
         {/* <Route path="/success" element={<Success />}></Route> */}
         {/* <Route path="/failed" element={<Failed />}></Route> */}
 
+<<<<<<< HEAD
         {/*-------------- Vijay Sir Pages --------------*/}
         {/* <Route path="/adminlogin" element={<AdminLogin />}></Route> */}
         {/* <Route path="/userlogin" element={<UserLogin />}></Route> */}
         {/* <Route path="/adminregister" element={<AdminRegister />}></Route> */}
         {/* <Route path="/userregister" element={<UserRegister />}></Route> */}
+=======
+        {/*-------------- Authentication Pages --------------*/}
+>>>>>>> origin/main
 
         {/*-------------- Ayush Sir Admin Pages --------------*/}
         <Route path='/active' element={<Active/>}></Route>    DONE
