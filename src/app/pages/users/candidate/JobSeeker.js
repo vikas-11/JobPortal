@@ -15,25 +15,21 @@ import {
   Container,
 } from "@mui/material";
 import { LocationOn, WorkOutline, Search } from "@mui/icons-material";
-import DrawerComp from "../../../partials/Drawer";
-import Axios from "../../../utils/axios";
+// import Axios from "../../../utils/Axios";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 import LocationCityOutlinedIcon from "@mui/icons-material/LocationCityOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import Footer from"../../../partials/Footer";
-import "./JobSeeker.css";
-
+import Footer from "../../../partials/Footer";
+import classes from "./JobSeeker.module.css";
 /*========== Images ============ */
 import img1 from "../../../assets/img/users/User.jpg";
 import img2 from "../../../assets/img/users/main.jpg";
 import img3 from "../../../assets/img/users/Slack.jpg";
 import img4 from "../../../assets/img/users/Samsung.jpg";
-
-
-
+import Colors from "../../../utils/colors";
 
 const image1Styles = {
   width: "117px",
@@ -53,12 +49,13 @@ const searchBarStyles = {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  color: "black",
+  color: Colors.palette.primary.main,
   borderRadius: "25px",
   margin: "10px",
   padding: "8px 16px",
   border: "1px solid #6973FE",
-  height: "40px",
+  height: "55px",
+  width: "100%",
 };
 
 const searchBarStylesResponsive = {
@@ -71,31 +68,39 @@ const iconContainerStyles = {
   alignItems: "center",
 };
 
+const labelStyles = {
+  color: Colors.palette.background.main,
+};
+
 const buttonStyles = {
   width: { xs: "100%", md: "200px" },
+  display: "flex",
   height: "40px",
-  borderRadius: "50px",
-  backgroundColor: "#CCFFCC",
+  borderRadius: "30px",
+  backgroundColor: Colors.palette.color.textColor,
   fontSize: "18px",
-  color: "black",
+  boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+  textTransform: "capitalize",
+  color: Colors.palette.primary.main,
+  marginRight: "10px",
   "&:hover": {
-    color: "white",
-    backgroundColor: "#7797FE",
+    color: Colors.palette.background.card,
+    backgroundColor: Colors.palette.background.text,
+    justifyContent: { sm: "center" },
   },
-  textTransform: "capitalize ",
 };
 
 const buttonStyles1 = {
   width: { xs: "100%", md: "200px" },
   height: "40px",
   borderRadius: "50px",
-  backgroundColor: "#CCFFCC",
+  backgroundColor: Colors.palette.color.textColor,
   fontSize: "18px",
-  color: "black",
+  color: Colors.palette.primary.main,
   marginTop: "20px",
   "&:hover": {
-    color: "white",
-    backgroundColor: "#7797FE",
+    color: Colors.palette.background.text,
+    backgroundColor: Colors.palette.background.card,
   },
   textTransform: "capitalize ",
 };
@@ -104,13 +109,13 @@ const buttonstyle2Responsive = {
   width: "auto",
   height: "30px",
   borderRadius: "30px",
-  backgroundColor: "#CCFFCC",
+  backgroundColor: Colors.palette.color.textColor,
   fontSize: "12px",
-  color: "black",
+  color: Colors.palette.primary.main,
   marginTop: "20px",
   "&:hover": {
-    color: "white",
-    backgroundColor: "#7797FE",
+    color: Colors.palette.background.text,
+    backgroundColor: Colors.palette.background.card,
   },
   textTransform: "capitalize ",
   fontWeight: "600",
@@ -120,21 +125,21 @@ const buttonstyle3Responsive = {
   width: "auto",
   height: "20px",
   borderRadius: "30px",
-  backgroundColor: "white",
+  backgroundColor: Colors.palette.background.text,
   fontSize: "10px",
-  color: "black",
+  color: Colors.palette.primary.main,
   marginTop: "20px",
   "&:hover": {
-    color: "white",
-    backgroundColor: "#7797FE",
+    color: Colors.palette.background.text,
+    backgroundColor: Colors.palette.background.card,
   },
   textTransform: "capitalize ",
   fontWeight: "600",
 };
 
 const dividerStyles = {
-  backgroundColor: "#6973FE",
-  height: "55px",
+  backgroundColor: Colors.palette.background.default,
+  height: "100%",
 };
 
 const JobSeeker = () => {
@@ -167,145 +172,89 @@ const JobSeeker = () => {
 
   return (
     <>
-      <AppBar
-        sx={{
-          background: "#6973FE",
-          boxShadow: "none",
-          position: "static",
-          marginBottom: "8px",
-        }}
-      >
-        <Toolbar>
-          <DrawerComp sx={{ marginRight: "auto" }} />
-          <Typography
-            sx={{
-              font: "Readex Pro",
-              fontWeight: "400",
-              fontSize: "2rem",
-              marginRight: "auto",
-            }}
-          >
-            Smart Job
-          </Typography>
-          {isMatch ? (
-            <></>
-          ) : (
-            <>
-              <Tabs
-                sx={{
-                  font: "Poppins",
-                  fontWeight: "400",
-                  marginRight: "auto",
-                }}
-                textColor="white"
-                value={value}
-                onChange={(e, value) => setValue(value)}
-              >
-                <Tab label="Jobs" />
-                <Tab label="Companies" />
-                <Tab label="Services" />
-                <Tab label="User Profile" />
-              </Tabs>
-              <Button
-                sx={{
-                  marginRight: "auto",
-                  borderRadius: "20px",
-                  color: "white",
-                  borderColor: "white",
-                }}
-                variant="outlined"
-              >
-                Register
-              </Button>
-              <Button
-                sx={{
-                  marginRight: "auto",
-                  borderRadius: "20px",
-                  color: "white",
-                  borderColor: "white",
-                }}
-                variant="outlined"
-              >
-                Login
-              </Button>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
+      {/* <Navbar/> */}
 
       {/* Search Bar */}
       <Box
-        component="form" // Form element to handle form submission
         sx={{
-          ...searchBarStyles,
-          ...(isSmallScreen && searchBarStylesResponsive),
-          flexDirection: isSmallScreen ? "column" : "row",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        {/* Search Input */}
-        <Grid>
-          <Box sx={iconContainerStyles}>
-            <Search />
-            <TextField
-              label="Skill/Designations/Companies"
-              variant="outlined"
-              size="small"
-              fullWidth={!isSmallScreen}
-              sx={{
-                "& fieldset": { border: "none" },
-              }}
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-            />
-          </Box>
-        </Grid>
-        {!isSmallScreen && (
-          <Divider orientation="vertical" sx={dividerStyles} />
-        )}
-        {/* Location Input */}
-        <Grid item style={{ marginRight: isSmallScreen ? "0" : "16px" }}>
-          <Box sx={iconContainerStyles}>
-            <LocationOn />
-            <TextField
-              label="Location"
-              variant="outlined"
-              size="small"
-              fullWidth={!isSmallScreen}
-              sx={{
-                "& fieldset": { border: "none" },
-              }}
-            />
-          </Box>
-        </Grid>
-        {!isSmallScreen && (
-          <Divider orientation="vertical" sx={dividerStyles} />
-        )}
-        {/* Experience Input */}
-        <Grid item>
-          <Box sx={iconContainerStyles}>
-            <WorkOutline />
-            <TextField
-              label="Experience"
-              variant="outlined"
-              size="small"
-              fullWidth={!isSmallScreen}
-              sx={{
-                "& fieldset": { border: "none" },
-              }}
-            />
-          </Box>
-        </Grid>
-        {!isSmallScreen && (
-          <Divider orientation="vertical" sx={dividerStyles} />
-        )}
-        {/* Submit Button */}
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ ...buttonStyles, ...(isSmallScreen && buttonstyle2Responsive) }}
+        <Box
+          component="form" // Form element to handle form submission
+          sx={{
+            ...searchBarStyles,
+            ...(isSmallScreen && searchBarStylesResponsive),
+            flexDirection: isSmallScreen ? "column" : "row",
+          }}
         >
-          Search
-        </Button>
+          {/* Search Input */}
+          <Grid item style={{ marginRight: isSmallScreen ? "0" : "16px" }}>
+            <Box sx={iconContainerStyles}>
+              <Search />
+              <TextField
+                label="Job Title/Role/Skills"
+                variant="outlined"
+                size="small"
+                fullWidth={!isSmallScreen}
+                InputLabelProps={{ style: labelStyles }}
+                sx={{
+                  "& fieldset": { border: "none" },
+                }}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              />
+            </Box>
+          </Grid>
+          {!isSmallScreen && (
+            <Divider orientation="vertical" sx={dividerStyles} />
+          )}
+          {/* Location Input */}
+          <Grid item style={{ marginRight: isSmallScreen ? "0" : "16px" }}>
+            <Box sx={iconContainerStyles}>
+              <LocationOn />
+              <TextField
+                label="Location"
+                variant="outlined"
+                size="small"
+                fullWidth={!isSmallScreen}
+                InputLabelProps={{ style: labelStyles }}
+                sx={{
+                  "& fieldset": { border: "none" },
+                }}
+              />
+            </Box>
+          </Grid>
+          {!isSmallScreen && (
+            <Divider orientation="vertical" sx={dividerStyles} />
+          )}
+          {/* Experience Input */}
+          <Grid item>
+            <Box sx={iconContainerStyles}>
+              <WorkOutline />
+              <TextField
+                label="Experience"
+                variant="outlined"
+                size="small"
+                fullWidth={!isSmallScreen}
+                InputLabelProps={{ style: labelStyles }}
+                sx={{
+                  "& fieldset": { border: "none" },
+                }}
+              />
+            </Box>
+          </Grid>
+          {!isSmallScreen && (
+            <Divider orientation="vertical" sx={dividerStyles} />
+          )}
+          {/* Submit Button */}
+          <Button type="submit" variant="contained" sx={buttonStyles}>
+            <Search />
+            Search
+          </Button>
+        </Box>
       </Box>
 
       {/*============ MAIN CONTENT ==============*/}
@@ -314,7 +263,7 @@ const JobSeeker = () => {
           {/*============ COLUMN 1 ==============*/}
           <Grid item md={3}>
             <Box>
-              <div className="text">
+              <div className={classes["text"]}>
                 <Box
                   component="img"
                   src={img1}
@@ -341,37 +290,58 @@ const JobSeeker = () => {
                 </Button>
               </div>
 
-              <div class="block1CLM1">
+              <div
+                className={classes["block1CLM1"]}
+                style={{
+                  color: Colors.palette.background.text,
+                  backgroundColor: Colors.palette.background.card,
+                }}
+              >
                 <h4>Profile Performance</h4>
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
-                    <Box className="marginClass">Search appearances</Box>
-                    <Box className="marginClass">0</Box>
+                    <Box className={classes["marginClass"]}>
+                      Search appearances
+                    </Box>
+                    <Box className={classes["marginClass"]}>0</Box>
                   </Grid>
                   <Grid item xs={6}>
-                    <Box className="marginClass">Recruiter actions</Box>
-                    <Box className="marginClass">0</Box>
+                    <Box className={classes["marginClass"]}>
+                      Recruiter actions
+                    </Box>
+                    <Box className={classes["marginClass"]}>0</Box>
                   </Grid>
                 </Grid>
               </div>
 
-              <div className="block2CLM1">
+              <div
+                className={classes["block2CLM1"]}
+                style={{
+                  color: Colors.palette.background.text,
+                  backgroundColor: " #F5F5F5",
+                }}
+              >
                 <Grid container spacing={2}>
                   <Grid item md={2}>
-                    <Box className="iconsResponsive">
-                    <HomeOutlinedIcon className="marginClass" />
-                    <WorkOutlineOutlinedIcon className="marginClass" />
-                    <LocationCityOutlinedIcon className="marginClass" />
-                    <NewspaperOutlinedIcon className="marginClass" />
+                    <Box className={classes["iconsResponsive"]}>
+                      <HomeOutlinedIcon className={classes["marginClass"]} />
+                      <WorkOutlineOutlinedIcon
+                        className={classes["marginClass"]}
+                      />
+                      <LocationCityOutlinedIcon
+                        className={classes["marginClass"]}
+                      />
+                      <NewspaperOutlinedIcon
+                        className={classes["marginClass"]}
+                      />
                     </Box>
-                    
                   </Grid>
 
                   <Grid item md={10}>
-                    <Box className="marginClass">Home</Box>
-                    <Box className="marginClass">Jobs</Box>
-                    <Box className="marginClass">Companies</Box>
-                    <Box className="marginClass">Blogs</Box>
+                    <Box className={classes["marginClass"]}>Home</Box>
+                    <Box className={classes["marginClass"]}>Jobs</Box>
+                    <Box className={classes["marginClass"]}>Companies</Box>
+                    <Box className={classes["marginClass"]}>Blogs</Box>
                   </Grid>
                 </Grid>
               </div>
@@ -380,7 +350,10 @@ const JobSeeker = () => {
           {/*============ COLUMN 2 ==============*/}
           <Grid item md={isSmallScreen ? 12 : 6}>
             <Box>
-              <div className="block1CLM2"></div>
+              <div
+                className={classes["block1CLM2"]}
+                style={{ backgroundColor: Colors.palette.background.card }}
+              ></div>
             </Box>
 
             <Grid container spacing={2}>
@@ -392,14 +365,14 @@ const JobSeeker = () => {
                     width: "auto",
                     height: "40px",
                     borderRadius: "50px",
-                    backgroundColor: "white",
+                    backgroundColor: Colors.palette.background.text,
                     fontSize: "18px",
-                    color: "black",
+                    color: Colors.palette.primary.main,
                     marginTop: "20px",
                     padding: "25px",
                     "&:hover": {
-                      color: "#7797FE",
-                      backgroundColor: "white",
+                      color: Colors.palette.background.card,
+                      backgroundColor: Colors.palette.background.text,
                     },
                     textTransform: "capitalize ",
                     ...(isSmallScreen && buttonstyle3Responsive),
@@ -416,14 +389,14 @@ const JobSeeker = () => {
                     width: "auto",
                     height: "40px",
                     borderRadius: "50px",
-                    backgroundColor: "white",
+                    backgroundColor: Colors.palette.background.text,
                     fontSize: "18px",
-                    color: "black",
+                    color: Colors.palette.primary.main,
                     marginTop: "20px",
                     padding: "25px",
                     "&:hover": {
-                      color: "#7797FE",
-                      backgroundColor: "white",
+                      color: Colors.palette.background.card,
+                      backgroundColor: Colors.palette.background.text,
                     },
                     textTransform: "capitalize ",
                     ...(isSmallScreen && buttonstyle3Responsive),
@@ -434,10 +407,16 @@ const JobSeeker = () => {
               </Grid>
             </Grid>
 
-            <Box className="block2CLM2">
+            <Box
+              className={classes["block2CLM2"]}
+              Style={{ backgroundColor: Colors.palette.background.card }}
+            >
               <Grid container spacing={2}>
                 <Grid item md={6}>
-                  <Box className="block2CLM2Box">
+                  <Box
+                    className={classes["block2CLM2Box"]}
+                    style={{ backgroundColor: Colors.palette.background.text }}
+                  >
                     <Box
                       component="img"
                       src={img3}
@@ -457,7 +436,10 @@ const JobSeeker = () => {
                 </Grid>
 
                 <Grid item md={6}>
-                  <Box className="block2CLM2Box">
+                  <Box
+                    className={classes["block2CLM2Box"]}
+                    style={{ backgroundColor: Colors.palette.background.text }}
+                  >
                     <Box
                       component="img"
                       src={img4}
@@ -479,14 +461,17 @@ const JobSeeker = () => {
               </Grid>
             </Box>
 
-            <Box className="block3CLM2">
+            <Box className={classes["block3CLM2"]}>
               <span>Banner</span>
             </Box>
           </Grid>
           {/*============ COLUMN 3 ==============*/}
           <Grid item md={3}>
-            <Box className="block1CLM3">
-              <p style={{ color: "white" }}>
+            <Box
+              className={classes["block1CLM3"]}
+              style={{ backgroundColor: Colors.palette.background.card }}
+            >
+              <p style={{ color: Colors.palette.background.text }}>
                 Do you need help introducing yourself confidently in interviews?
               </p>
               <Button
@@ -496,14 +481,14 @@ const JobSeeker = () => {
                   width: "auto",
                   height: "10px",
                   borderRadius: "50px",
-                  backgroundColor: "white",
+                  backgroundColor: Colors.palette.background.text,
                   fontSize: "14px",
-                  color: "black",
+                  color: Colors.palette.primary.main,
                   marginTop: "10px",
                   padding: "20px",
                   "&:hover": {
-                    color: "#7797FE",
-                    backgroundColor: "white",
+                    color: Colors.palette.background.card,
+                    backgroundColor: Colors.palette.background.text,
                   },
                   ...(isSmallScreen && buttonstyle2Responsive),
                 }}
@@ -517,14 +502,14 @@ const JobSeeker = () => {
                   width: "auto",
                   height: "10px",
                   borderRadius: "50px",
-                  backgroundColor: "white",
+                  backgroundColor: Colors.palette.background.text,
                   fontSize: "14px",
-                  color: "black",
+                  color: Colors.palette.primary.main,
                   marginTop: "10px",
                   padding: "20px",
                   "&:hover": {
-                    color: "#7797FE",
-                    backgroundColor: "white",
+                    color: Colors.palette.background.card,
+                    backgroundColor: Colors.palette.background.text,
                   },
                   ...(isSmallScreen && buttonstyle2Responsive),
                 }}
@@ -533,7 +518,10 @@ const JobSeeker = () => {
               </Button>
             </Box>
 
-            <Box className="block2CLM3">
+            <Box
+              className={classes["block2CLM3"]}
+              style={{ backgroundColor: Colors.palette.background.text }}
+            >
               <span>Banner</span>
             </Box>
           </Grid>
@@ -541,7 +529,12 @@ const JobSeeker = () => {
       </Container>
 
       {/*============ FOOTER ==============*/}
-      <Footer/>
+      <Box
+        sx={{ mt: { md: "10%", xl: "10%", lg: "10%", sm: "20%", xs: "20%" } }}
+      >
+        <Footer />
+      </Box>
+      {/* <Footer/> */}
     </>
   );
 };

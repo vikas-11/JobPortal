@@ -10,7 +10,7 @@
   import Spirale from "../admin/common/common-icon/spiraleinfosoft.jpg";
   import Tablebanner from "../admin/common/Tablebanner"
   import { Grid } from '@mui/material';
-  import Axios from '../../../utils/axios';
+  import Axios from '../../../utils/Axios';
   import { useState, useEffect } from 'react';
   import Loader from '../../users/admin/common/Loader';
   const OfferBanner = () => {

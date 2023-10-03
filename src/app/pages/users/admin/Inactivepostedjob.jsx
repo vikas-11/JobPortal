@@ -22,7 +22,7 @@ import colors from "../../../utils/colors";
 import PostedJobCard from "./PostedJobCard";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Button from "@mui/material/Button";
-import Axios from '../../../utils/axios';
+import Axios from '../../../utils/Axios';
 import Loader from '../../users/admin/common/Loader';
 import { useEffect, useState } from 'react';
 

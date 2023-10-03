@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Searchbar from "./common/Searchbar";
 import Sidebar from "./common/Sidebar";
-import Table from "./common/table";
+import StickyHeadTable from "./common/table";
 import Menu from "./common/menu";
-import { Box, Typography } from '@mui/material';
-import { Search } from '@mui/icons-material';
-import Axios from '../../../utils/axios';
-import Loader from '../../users/admin/common/Loader';
+import { Box, Typography, Container } from "@mui/material";
+import { Search } from "@mui/icons-material";
+import Axios from "../../../utils/Axios";
+import Loader from "../../users/admin/common/Loader";
 
 const Active = () => {
-  
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]); // State to store the fetched data
+  const [data, setData] = useState([]);
 
   const fetchGetAllActive = async () => {
     setLoading(true);
     try {
-      const response = await Axios.get('/getallactiverecruiter');
-      setData(response.data.data); // Update the state with fetched data
-      console.log(response.data.data)
+      const response = await Axios.get("/pagignationofrecruiterandcount", { params: { is_approved: 1, pages: 1 } });
+      setData(response.data.data);
+      console.log('response.data.data',typeof(response.data.data))
+      console.log('response',response.data.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -31,19 +31,39 @@ const Active = () => {
   }, []);
 
   return (
-
-    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" className="wrapper">
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      className="wrapper"
+    >
       <Sidebar />
-      <Typography variant='h5' justifyContent="start" alignItems="start">Active Recruiter</Typography>
+      <Typography variant="h4" justifyContent="center" alignItems="center" marginBottom="20px">
+        Active Recruiter
+      </Typography>
       <Searchbar />
       <Menu />
 
-      {/* Pass the fetched data to the Table component */}
-      {loading ? <h1><Loader/></h1> : <Table data={data} />}
-     
+      {/* Pass the fetched data to the corrected Table component*/}
+      {loading ? (
+        <h1>
+          <Loader />
+        </h1>
+      ) :
+      (data.length >0 ? (
+        <>
+        
+        {console.log('loader running in active',data)}
+        <StickyHeadTable data={data} loading={loading}/>
+        </>
+      )
+      : <div>No data to display</div>)
+    }
 
     </Box>
   );
 };
 
 export default Active;
+

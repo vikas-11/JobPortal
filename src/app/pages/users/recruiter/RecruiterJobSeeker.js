@@ -5,8 +5,8 @@ import recruiterImage from "../../../assets/img/recruiter/recruiter.jpg";
 import header from "../../../assets/img/users/Vector1.jpg";
 import footer from "../../../assets/img/users/Vector2.jpg";
 
-import "../../../assets/css/RecruiterJobSeeker.css";
-import Axios from "../../../utils/axios";
+// import "../../../assets/css/RecruiterJobSeeker.css";
+import Axios from "../../../utils/Axios";
 const RecruiterJobSeeker = () => {
 
     // const [loading, setLoading] = useState(false);

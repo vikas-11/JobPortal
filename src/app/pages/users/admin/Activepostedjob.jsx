@@ -1,4 +1,3 @@
-
 import React from "react";
 import Sidebar from "../admin/common/Sidebar";
 import SearchBar from "../admin/common/Searchbar";
@@ -22,9 +21,9 @@ import colors from "../../../utils/colors";
 import PostedJobCard from "./PostedJobCard";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Button from "@mui/material/Button";
-import Axios from '../../../utils/axios';
-import Loader from '../../users/admin/common/Loader';
-import { useEffect, useState } from 'react';
+import Axios from "../../../utils/Axios";
+import Loader from "../../users/admin/common/Loader";
+import { useEffect, useState } from "react";
 
 const styles = {
   container: {
@@ -123,9 +122,9 @@ const ActivePostedJob = ({ Postedtitle, buttonColor }) => {
   const fetchGetAllActive = async () => {
     setLoading(true);
     try {
-      const response = await Axios.get('/getallaprovedjobs'); // Check if the API endpoint is correct
-      setData(response.data.data); // Update the state with fetched data
-      console.log(response.data.data)
+      const response = await Axios.get("/getallapprovednotappjobs", { params: { is_approved: 1, pages: 1 } });
+      setData(response.data.data);
+      console.log(response.data.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -140,11 +139,10 @@ const ActivePostedJob = ({ Postedtitle, buttonColor }) => {
     <div>
       <Sidebar />
 
-      
       <Grid container spacing={2}>
         {/* Main Content */}
         <Grid marginLeft={6} alignItems="center" item xs={10} md={11}>
-        <br />
+          <br />
           <SearchBar style={searchbar} />
           <Box
             display="flex"
@@ -155,45 +153,41 @@ const ActivePostedJob = ({ Postedtitle, buttonColor }) => {
             xs={1}
             md={14}
           >
-            
-    <Grid container justifyContent="center" alignItems="center">
-      <Stack
-        // overflow="scroll"
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          gap: "40px",
-          alignItems: "center",
-          marginLeft: "2rem",
-        }}
-      >
-        <Typography variant="h4" sx={styles.filterLabel}>
-          Active
-        </Typography>
-        <Typography variant="h4" sx={styles.filterLabel}>
-          Inactive
-        </Typography>
-        <Typography variant="h6" sx={styles.filterLabel}>
-          Pending
-        </Typography>
-        <Typography variant="h6" sx={styles.filterLabel}>
-          All
-        </Typography>
-      </Stack>
+            <Grid container justifyContent="center" alignItems="center">
+              <Stack
+                // overflow="scroll"
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  gap: "40px",
+                  alignItems: "center",
+                  marginLeft: "2rem",
+                }}
+              >
+                <Typography variant="h4" sx={styles.filterLabel}>
+                  Active
+                </Typography>
+                <Typography variant="h4" sx={styles.filterLabel}>
+                  Inactive
+                </Typography>
+                <Typography variant="h6" sx={styles.filterLabel}>
+                  Pending
+                </Typography>
+                <Typography variant="h6" sx={styles.filterLabel}>
+                  All
+                </Typography>
+              </Stack>
 
-      <Stack>
-        <Button variant="outlined" sx={{ borderRadius: "45px", marginLeft:"2rem" }}>
-          <KeyboardArrowDownIcon />
-        </Button>
-      </Stack>
-    </Grid>
-  
-
-
-
-
-
+              <Stack>
+                <Button
+                  variant="outlined"
+                  sx={{ borderRadius: "45px", marginLeft: "2rem" }}
+                >
+                  <KeyboardArrowDownIcon />
+                </Button>
+              </Stack>
+            </Grid>
           </Box>
 
           <Divider
@@ -202,27 +196,36 @@ const ActivePostedJob = ({ Postedtitle, buttonColor }) => {
               border: "1px solid #000000",
               marginLeft: "2rem",
               marginBottom: "30px",
-              marginTop:"-20px",
-              width:"100%"
+              marginTop: "-20px",
+              width: "100%",
             }}
           />
 
-        {loading ? <Loader/> :
-          <Grid
-            container
-            spacing={3}
-            rowSpacing={5}
-            style={styles.container}
-            sx={styles.container}
-          >
-            
-            {data.map((job, index) => (
+          {loading ? (
+            <Loader />
+          ) : (
+            <Grid
+              container
+              spacing={3}
+              rowSpacing={5}
+              style={styles.container}
+              sx={styles.container}
+            >
+              {data.map((job, index) => (
                 <Grid key={index} item xs={12} md={4}>
-                  <PostedJobCard title={job.job_id} Company={job.company_id} Postedtitle1={Postedtitle} Description={job.description } PostedDate={job.created_at} Salary={job.Salary} buttonColor={buttonColor} />
+                  <PostedJobCard
+                    title={job.job_id}
+                    Company={job.company_id}
+                    Postedtitle1={Postedtitle}
+                    Description={job.description}
+                    PostedDate={job.created_at}
+                    Salary={job.Salary}
+                    buttonColor={buttonColor}
+                  />
                 </Grid>
               ))}
-          </Grid>
-          }
+            </Grid>
+          )}
           <Stack sx={styles.pagination}>
             <Pagination
               count={23}

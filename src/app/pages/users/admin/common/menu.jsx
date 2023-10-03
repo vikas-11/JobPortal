@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Grid from "@mui/material/Grid";
 import theme from "../../../../utils/colors";
+import { Link as RouterLink } from "react-router-dom";
 function handleClick(event) {
   event.preventDefault();
   console.info("You clicked a breadcrumb.");
@@ -13,47 +14,41 @@ function handleClick(event) {
 
 export default function Menu() {
   const breadcrumbs = [
-    <Link
+    <RouterLink
       underline="hover"
       key="1"
-      style={{color: theme.palette.primary.main }}
-      href="/"
-      onClick={handleClick}
+      style={{ color: theme.palette.primary.main }}
+      to="/dashboard"
+      // onClick={handleClick}
     >
       Dashboard
-    </Link>,
-    <Link
+    </RouterLink>,
+    <RouterLink
       underline="hover"
       key="2"
       color="inherit"
-      href="/active"
-      onClick={handleClick}
+      to="/active"
+      // onClick={handleClick}
     >
-     All Recruiters
-    </Link>,
+      All Recruiters
+    </RouterLink>,
 
-    <Link
+    <RouterLink
       underline="hover"
       key="3"
       color="inherit"
-      href="/inactive"
-      onClick={handleClick}
+      to="/candidate"
+      // onClick={handleClick}
     >
       All Candidates
-    </Link>,
+    </RouterLink>,
   ];
 
   return (
-    <Grid  container spacing={2} justifyContent={'space-around'} ml={3} mt={2}
-      // style={{
-      //   display: "flex",
-      //   justifyContent: "center",
-      //   alignItems: "center",
-      // }}
-    >
+    <Grid container spacing={2} justifyContent={"space-around"} mt={2}>
       <Stack spacing={2}>
         <Grid container justifyContent="center">
-          <Grid item xs={5} md={12} lg={12}>
+        <Grid item xs={6} md={12} lg={12} >
             <Breadcrumbs
               separator={<NavigateNextIcon fontSize="large" />}
               aria-label="breadcrumb"

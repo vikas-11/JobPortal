@@ -3,7 +3,7 @@ import SearchBar from '../../users/admin/common/Searchbar'
 import Sidebar from '../../users/admin/common/Sidebar'
 import Table from '../../users/admin/common/table'
 import { Container, Typography,Box, Stack } from '@mui/material'
-import Axios from '../../../utils/axios';
+import Axios from '../../../utils/Axios';
 import Loader from '../../users/admin/common/Loader';
 import{ useState, useEffect } from 'react';
 

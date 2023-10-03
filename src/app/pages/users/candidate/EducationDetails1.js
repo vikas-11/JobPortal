@@ -4,19 +4,31 @@ import Typography from "@mui/material/Typography";
 import { Grid, Divider } from "@mui/material";
 import { Container, TextField, Button, useMediaQuery } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import CheckIcon from "@mui/icons-material/Check";
-import "./EducationDetails.css";
-import Axios from "../../../utils/axios";
+import Axios from "../../../utils/Axios";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+
+import classes from "./EducationDetails.module.css";
+import Colors from "../../../utils/colors";
+import { Link } from "react-router-dom";
+
+const steps = ["Basic Details", "Employment", "Education", "Last Step "];
+const style = {
+  customLink: {
+    textDecoration: "none",
+    fontWeight: "bold",
+  },
+};
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const heading = {
   fontWeight: "600",
   textAlign: "left",
-  color: "#6973FE",
+  color: Colors.palette.background.default,
   marginTop: "30px",
   marginBottom: "10px",
   lineHeight: "70px",
@@ -30,7 +42,7 @@ const textFeild = {
   width: "100%",
   height: "50px",
   borderRadius: "30px",
-  border: "1px solid #6973FE",
+  // border: "1px solid #6973FE",
   padding: "0 14px",
   boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
 };
@@ -41,10 +53,10 @@ const outlinedButton = {
   marginBottom: "10px",
   borderRadius: "30px",
   textTransform: "capitalize",
-  color: "black",
+  color: Colors.palette.primary.main,
   "&:hover": {
-    color: "white",
-    backgroundColor: "#7797FE",
+    color: Colors.palette.background.text,
+    backgroundColor: Colors.palette.background.card,
   },
 };
 
@@ -58,11 +70,11 @@ const button = {
   fontSize: "16px",
   borderRadius: "30px",
   textTransform: "capitalize",
-  backgroundColor: "#CCFFCC",
-  color: "black",
+  backgroundColor: Colors.palette.primary.backgroundjob,
+  color: Colors.palette.primary.main,
   "&:hover": {
-    color: "white",
-    backgroundColor: "#7797FE",
+    color: Colors.palette.background.text,
+    backgroundColor: Colors.palette.background.card,
   },
 };
 
@@ -91,68 +103,135 @@ export default function EducationDetails1() {
   //   fetchEducationDetails1();
   // }, []);
 
-
   return (
     <>
-      <Grid container spacing={1}>
-        <Grid item xs={4}>
-          <div class="list-wrapper">
-            <div class="line"></div>
+      {/*  */}
 
-            <div class="list-item-wrapper">
-              <div class="list-bullet1">
+      <Box
+        sx={{
+          width: "100%",
+          color: Colors.palette.background.text,
+          mt: "10%",
+          display: {
+            xs: "block",
+            sm: "none",
+            md: "none",
+            xl: "none",
+            lg: "none",
+          },
+        }}
+      >
+        <Stepper activeStep={1} alternativeLabel>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+      </Box>
+
+      {/*  */}
+      <Grid container spacing={1}>
+        <Grid
+          item
+          xs={4}
+          sx={{
+            display: {
+              xs: "none",
+              sm: "block",
+              md: "block",
+              xl: "block",
+              lg: "block",
+            },
+          }}
+        >
+          <div className={classes["list-wrapper"]}>
+            <div className={classes["line"]}></div>
+
+            <div className={classes["list-item-wrapper"]}>
+              <div
+                className={classes["list-bullet1"]}
+                style={{
+                  background: Colors.palette.background.card,
+                  color: Colors.palette.background.text,
+                }}
+              >
                 <CheckIcon sx={{ fontSize: "16px" }} />
               </div>
-              <div class="list-item">
-                <div class="list-title">Basic Details</div>
+              <div className={classes["list-item"]}>
+                <div className={classes["list-title"]}>Basic Details</div>
               </div>
             </div>
 
-            <div class="list-item-wrapper">
-              <div class="list-bullet2">
-                <CheckIcon sx={{ color: "#CCFFCC" }} />
+            <div className={classes["list-item-wrapper"]}>
+              <div
+                className={classes["list-bullet2"]}
+                style={{
+                  background: Colors.palette.color.textColor,
+                  color: Colors.palette.background.text,
+                }}
+              >
+                <CheckIcon sx={{ color: Colors.palette.color.textColor }} />
               </div>
-              <div class="list-item">
-                <div class="list-title">Employment</div>
+              <div className={classes["list-item"]}>
+                <div className={classes["list-title"]}>Employment</div>
               </div>
             </div>
 
-            <div class="list-item-wrapper">
-              <div class="list-bullet3">
-                <CheckIcon sx={{ color: "#6973FE" }} />
+            <div className={classes["list-item-wrapper"]}>
+              <div
+                className={classes["list-bullet3"]}
+                style={{
+                  background: Colors.palette.background.card,
+                  color: Colors.palette.background.text,
+                }}
+              >
+                <CheckIcon sx={{ color: Colors.palette.background.card }} />
               </div>
-              <div class="list-item">
-                <div class="list-title">Education</div>
+              <div className={classes["list-item"]}>
+                <div className={classes["list-title"]}>Education</div>
               </div>
-              <div class="white-line"></div>
+              <div className={classes["white-line"]}></div>
             </div>
 
-            <div class="list-item-wrapper">
-              <div class="list-bullet4">
-                <CheckIcon sx={{ color: "#6973FE" }} />
+            <div className={classes["list-item-wrapper"]}>
+              <div
+                className={classes["list-bullet4"]}
+                style={{
+                  background: Colors.palette.color.textColor,
+                  color: Colors.palette.background.text,
+                }}
+              >
+                <CheckIcon
+                  sx={{ color: Colors.palette.primary.backgroundjob }}
+                />
               </div>
-              <div class="list-item">
-                <div class="list-title">Last Step</div>
+              <div className={classes["list-item"]}>
+                <div className={classes["list-title"]}>Last Step</div>
               </div>
-              <div class="white-line"></div>
+              <div className={classes["white-line"]}></div>
             </div>
           </div>
         </Grid>
+        {/* horintontal cvoerted */}
 
-        <Grid item xs={8}>
+        {/*  */}
+        <Grid item xs={12} sm={8}>
           <Container>
             <Typography
-              variant="h4"
+              variant="Typography"
               sx={{ ...heading, ...(isSmallScreen && headingResponsive) }}
             >
               Add Your Employment
             </Typography>
-            <p>Employment details help recruiters understand your background</p>
+            <Typography sx={{ fontSize: "18px", marginBottom: "20px" }}>
+              Employment details help recruiters understand your background
+            </Typography>
 
-            <h4>Are You currently employed?</h4>
             <Grid container rowSpacing={4} columnSpacing={8}>
-              <Grid item xs={12} md={6}>
-                <div className="btn">
+              <Grid item xs={12} md={12}>
+                <div className={classes["btn"]}>
+                  <Typography>Are You currently employed?</Typography>
                   <Button
                     type="submit"
                     variant="outlined"
@@ -176,11 +255,10 @@ export default function EducationDetails1() {
                 </div>
               </Grid>
             </Grid>
-
-            <h4>Gender</h4>
             <Grid container rowSpacing={4} columnSpacing={12}>
-              <Grid item xs={12} md={6}>
-                <div className="btn">
+              <Grid item xs={12} md={12}>
+                <div className={classes["btn"]}>
+                  <Typography>Gender</Typography>
                   <Button
                     type="submit"
                     variant="outlined"
@@ -215,7 +293,10 @@ export default function EducationDetails1() {
               </Grid>
             </Grid>
 
-            <h4>Total work experience</h4>
+            {/* <Typography>Total work experience</Typography> */}
+            <Typography sx={{ marginTop: "10px", marginBottom: "10px" }}>
+              Total work experience
+            </Typography>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={6}>
                 <TextField
@@ -239,7 +320,10 @@ export default function EducationDetails1() {
               </Grid>
             </Grid>
 
-            <h4>Company</h4>
+            {/* <Typography>Company</Typography> */}
+            <Typography sx={{ marginTop: "10px", marginBottom: "10px" }}>
+              Company
+            </Typography>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={8}>
                 <TextField
@@ -253,7 +337,10 @@ export default function EducationDetails1() {
               </Grid>
             </Grid>
 
-            <h4>Job Title</h4>
+            {/* <Typography>Job Title</Typography> */}
+            <Typography sx={{ marginTop: "10px", marginBottom: "10px" }}>
+              Job Title
+            </Typography>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={8}>
                 <TextField
@@ -267,11 +354,14 @@ export default function EducationDetails1() {
               </Grid>
             </Grid>
 
-            <h4>Current City</h4>
+            {/* <Typography>Current City</Typography> */}
+            <Typography sx={{ marginTop: "10px", marginBottom: "10px" }}>
+              Current City
+            </Typography>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={8}>
                 <TextField
-                  label="Eg. Flipakart"
+                  label="Eg. Mumbai"
                   variant="outlined"
                   fullWidth
                   InputProps={{
@@ -279,17 +369,20 @@ export default function EducationDetails1() {
                   }}
                 />
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={4} sx={{ marginTop: "5px" }}>
                 <Checkbox {...label} defaultChecked />
                 Outside India
               </Grid>
             </Grid>
 
-            <h4>Suggestions:</h4>
+            {/* <Typography>Suggestions:</Typography> */}
+            <Typography sx={{ marginTop: "10px", marginBottom: "10px" }}>
+              Suggestions:
+            </Typography>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={12}>
                 <div
-                  className="chips"
+                  className={classes["chips"]}
                   style={{ ...(isSmallScreen && chipResponsive) }}
                 >
                   <Button
@@ -323,7 +416,7 @@ export default function EducationDetails1() {
               </Grid>
               <Grid item xs={12} md={12}>
                 <div
-                  className="chips"
+                  className={classes["chips"]}
                   style={{ ...(isSmallScreen && chipResponsive) }}
                 >
                   <Button
@@ -366,7 +459,10 @@ export default function EducationDetails1() {
               </Grid>
             </Grid>
 
-            <h4>Working Since</h4>
+            {/* <Typography>Working Since</Typography> */}
+            <Typography sx={{ marginTop: "10px", marginBottom: "10px" }}>
+              Working Since
+            </Typography>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={5}>
                 <TextField
@@ -400,7 +496,10 @@ export default function EducationDetails1() {
               </Grid>
             </Grid>
 
-            <h4>Annual Salary</h4>
+            {/* <Typography>Annual Salary</Typography> */}
+            <Typography sx={{ marginTop: "10px", marginBottom: "10px" }}>
+              Annual Salary
+            </Typography>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={6}>
                 <TextField
@@ -414,11 +513,14 @@ export default function EducationDetails1() {
               </Grid>
             </Grid>
 
-            <h4>Notice Period</h4>
+            {/* <Typography>Notice Period</Typography> */}
+            <Typography sx={{ marginTop: "10px", marginBottom: "10px" }}>
+              Notice Period
+            </Typography>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={12}>
                 <div
-                  className="chips"
+                  className={classes["chips"]}
                   style={{ ...(isSmallScreen && chipResponsive) }}
                 >
                   <Button
@@ -470,17 +572,21 @@ export default function EducationDetails1() {
               </Grid>
             </Grid>
 
-            <div className="BottomBtn">
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{
-                  ...button,
-                  ...(isSmallScreen && outlinedButtonResponsive),
-                }}
-              >
-                Continue <ArrowForwardOutlinedIcon />
-              </Button>
+            <div className={classes["BottomBtn"]}>
+              <Link to="/educationdetails2" style={style.customLink}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    ...button,
+                    ...(isSmallScreen && outlinedButtonResponsive),
+                    textAlign: "center",
+                    ml: "-25%",
+                  }}
+                >
+                  Continue <ArrowForwardOutlinedIcon />
+                </Button>
+              </Link>
             </div>
           </Container>
         </Grid>

@@ -1,37 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
-  AppBar,
+  Card,
+  CardContent,
   Button,
-  Tab,
-  Tabs,
-  Toolbar,
   Typography,
   useMediaQuery,
-  useTheme,
+  //useTheme,
   Box,
   Divider,
   Grid,
   Switch,
   TextField,
-  Container,
 } from "@mui/material";
 import { LocationOn, WorkOutline, Search } from "@mui/icons-material";
+import Colors from "../../../utils/colors";
 import ArrowDropDown from "@mui/icons-material/KeyboardArrowDown";
-import DrawerComp from "../../../partials/Drawer";
 import Footer from "../../../partials/Footer";
-import "./JobDetails.css";
-import Axios from "../../../utils/axios";
+// import Axios from '../../../utils/Axios';
 
 const searchBarStyles = {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  color: "black",
+  color: Colors.palette.primary.main,
   borderRadius: "25px",
   margin: "10px",
   padding: "8px 16px",
   border: "1px solid #6973FE",
-  height: "40px",
+  height: "55px",
 };
 
 const searchBarStylesResponsive = {
@@ -45,24 +41,39 @@ const iconContainerStyles = {
 };
 
 const buttonStyles = {
+  // width: { xs: "100%", md: "200px" },
+  // height: "40px",
+  // borderRadius: "50px",
+  // backgroundColor: Colors.palette.primary.backgroundjob,
+  // fontSize: "18px",
+  // color: Colors.palette.primary.main,
+  // marginRight: "10px",
+  // "&:hover": {
+  //   color: Colors.palette.primary.color,
+  //   backgroundColor: Colors.palette.background.card,
+  // },
+  // textTransform: "capitalize ",
+  // fontWeight: "600",
   width: { xs: "100%", md: "200px" },
+  display: "flex",
   height: "40px",
-  borderRadius: "50px",
-  backgroundColor: "#CCFFCC",
+  borderRadius: "30px",
+  backgroundColor: Colors.palette.color.textColor,
   fontSize: "18px",
-  color: "black",
+  boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+  textTransform: "capitalize",
+  color: Colors.palette.primary.main,
   marginRight: "10px",
   "&:hover": {
-    color: "white",
-    backgroundColor: "#7797FE",
+    color: Colors.palette.background.card,
+    backgroundColor: Colors.palette.background.text,
+    justifyContent: { sm: "center" },
   },
-  textTransform: "capitalize ",
-  fontWeight: "600",
 };
 
 const dividerStyles = {
-  backgroundColor: "#6973FE",
-  height: "55px",
+  backgroundColor: Colors.palette.background.default,
+  height: "100%",
 };
 
 const layoutStyles = {
@@ -73,7 +84,7 @@ const layoutStyles = {
   alignItems: "center",
   margin: "10px",
   padding: "0 16px",
-  color: "#6973FE",
+  color: Colors.palette.background.default,
   border: "1px solid",
   justifyContent: "space-evenly",
   fontWeight: "600",
@@ -86,13 +97,14 @@ const layoutStylesResponsive = {
 
 const smallLayoutStyles = {
   width: "auto",
-  height: "34px",
+  height: "2.6rem",
   borderRadius: "31px",
+  fontSize: "14px",
   border: "1px solid",
   display: "flex",
   alignItems: "center",
-  justifyContent: "space-evenly",
-  padding: "0 12px",
+  justifyContent: "space-around",
+  padding: "10px",
 };
 
 const smallLayoutStylesResponsive = {
@@ -101,7 +113,7 @@ const smallLayoutStylesResponsive = {
 };
 
 const arrowDownStyles = {
-  color: "black",
+  color: Colors.palette.primary.main,
 };
 
 const layoutStyles2 = {
@@ -115,14 +127,14 @@ const layoutStyles2 = {
   justifyContent: "space-between",
   paddingInline: "20px",
   margin: "30px",
-  color: "#6973FE",
+  color: Colors.palette.background.default,
 };
 
 const JobDetails = () => {
   const [value, setValue] = useState();
-  const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  const isSmallScreen = useMediaQuery("(max-width: 960px)");
+  //const theme = useTheme();
+  // const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen = useMediaQuery("(max-width: 1080px)");
 
   // const [loading, setLoading] = useState(false);
   //   const [data, setData] = useState([]);
@@ -145,75 +157,8 @@ const JobDetails = () => {
 
   return (
     <>
-      <AppBar
-        sx={{
-          background: "#6973FE",
-          boxShadow: "none",
-          position: "static",
-          height: "70px",
-        }}
-      >
-        <Toolbar>
-          <DrawerComp sx={{ marginRight: "auto" }} />
-          <Typography
-            sx={{
-              font: "Readex Pro",
-              fontWeight: "400",
-              fontSize: "2rem",
-              marginRight: "auto",
-            }}
-          >
-            Smart Job
-          </Typography>
-          {isMatch ? (
-            <></>
-          ) : (
-            <>
-              <Tabs
-                sx={{
-                  font: "Poppins",
-                  fontWeight: "400",
-                  marginRight: "auto",
-                }}
-                textColor="white"
-                value={value}
-                onChange={(e, value) => setValue(value)}
-              >
-                <Tab label="Jobs" />
-                <Tab label="Companies" />
-                <Tab label="Services" />
-                <Tab label="User Profile" />
-              </Tabs>
-              <Button
-                sx={{
-                  marginRight: "auto",
-                  borderRadius: "20px",
-                  color: "white",
-                  borderColor: "white",
-                }}
-                variant="outlined"
-              >
-                Register
-              </Button>
-              <Button
-                sx={{
-                  marginRight: "auto",
-                  borderRadius: "20px",
-                  color: "white",
-                  borderColor: "white",
-                }}
-                variant="outlined"
-              >
-                Login
-              </Button>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-
-      {/* Search Bar */}
       <Box
-        component="form" // Form element to handle form submission
+        component="form"
         sx={{
           ...searchBarStyles,
           ...(isSmallScreen && searchBarStylesResponsive),
@@ -276,13 +221,20 @@ const JobDetails = () => {
         {!isSmallScreen && (
           <Divider orientation="vertical" sx={dividerStyles} />
         )}
-        {/* Submit Button */}
-        <Button type="submit" variant="contained" sx={buttonStyles}>
-          Search
-        </Button>
+
+        <Box
+          sx={{
+            marginRight: isSmallScreen ? "30%" : "0px",
+            marginTop: isSmallScreen ? "10px" : "0px",
+          }}
+        >
+          <Button type="submit" variant="contained" sx={buttonStyles}>
+            <Search />
+            Search
+          </Button>
+        </Box>
       </Box>
 
-      {/* Layout */}
       <Box
         sx={{
           ...layoutStyles,
@@ -291,168 +243,237 @@ const JobDetails = () => {
         }}
       >
         <Box
-          sx={{ display: "flex", alignItems: "center", marginRight: "10px" }}
+          // sx={{
+          // display: "flex",
+          // alignItems: "center",
+          // marginRight: isSmallScreen ? "0" : "10px",
+          // marginBottom: isSmallScreen ? "10px" : "0",
+          // width: isSmallScreen ? "100%" : "auto",
+          // flex: "1",
+          display="inline-block"
+          maxWidth="70%"
+          whiteSpace="nowrap"
+          overflow="inherit"
+          // textOverflow="ellipsis"
+          // bgcolor="#f5f5f5" // Background color for the box
+          // // p={1} // Padding to create space around the content
+
+          // }}
         >
           <Typography
             variant="h6"
             component="span"
-            style={{ color: "#6973FE", fontWeight: "600" }}
+            style={{
+              color: Colors.palette.background.default,
+              fontWeight: "600", //whiteSpace: "nowrap",
+              //overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
           >
             Job Search
           </Typography>
           <ArrowDropDown style={arrowDownStyles} />
         </Box>
         <Divider
-          orientation="vertical"
-          sx={{ height: "34px", margin: "0 16px" }}
+          orientation={isSmallScreen ? "horizontal" : "vertical"}
+          sx={{
+            width: isSmallScreen ? "100%" : "1px",
+            height: isSmallScreen ? "1px" : "70px",
+            marginBottom: isSmallScreen ? "10px" : "0",
+            marginLeft: isSmallScreen ? "0" : "16px",
+          }}
         />
-        <Box
+        <Grid
+          container
+          spacing={1}
           sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
+            flexWrap: isSmallScreen ? "wrap" : "nowrap",
           }}
         >
-          <span style={{ color: "black" }}>Quick Apply</span>
-        </Box>
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>Location</span>
-          <ArrowDropDown style={arrowDownStyles} />{" "}
-        </Box>{" "}
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>Experience</span>
-          <ArrowDropDown style={arrowDownStyles} />{" "}
-        </Box>{" "}
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>Salary</span>
-          <ArrowDropDown style={arrowDownStyles} />{" "}
-        </Box>{" "}
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>Function</span>
-          <ArrowDropDown style={arrowDownStyles} />{" "}
-        </Box>{" "}
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>Role</span>
-          <ArrowDropDown style={arrowDownStyles} />{" "}
-        </Box>{" "}
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>Job Type</span>
-          <ArrowDropDown style={arrowDownStyles} />{" "}
-        </Box>{" "}
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>Job Freshness</span>
-          <ArrowDropDown style={arrowDownStyles} />{" "}
-        </Box>{" "}
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>All Filters</span>
-          <ArrowDropDown style={arrowDownStyles} />{" "}
-        </Box>{" "}
-        <Box
-          sx={{
-            ...smallLayoutStyles,
-            ...(isSmallScreen && smallLayoutStylesResponsive),
-            flexDirection: isSmallScreen ? "column" : "row",
-            marginLeft: "6px",
-            fontSize: "13px",
-          }}
-        >
-          <span style={{ color: "black" }}>Reset All</span>{" "}
-        </Box>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span
+                style={{
+                  color: Colors.palette.primary.main,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Quick Apply
+              </span>
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span
+                style={{
+                  color: Colors.palette.primary.main,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Location
+              </span>
+              <ArrowDropDown style={arrowDownStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span style={{ color: Colors.palette.primary.main }}>
+                Experience
+              </span>
+              <ArrowDropDown style={arrowDownStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span style={{ color: Colors.palette.primary.main }}>Salary</span>
+              <ArrowDropDown style={arrowDownStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span style={{ color: Colors.palette.primary.main }}>
+                Function
+              </span>
+              <ArrowDropDown style={arrowDownStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span style={{ color: Colors.palette.primary.main }}>Role</span>
+              <ArrowDropDown style={arrowDownStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span
+                style={{
+                  color: Colors.palette.primary.main,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Job Type
+              </span>
+              <ArrowDropDown style={arrowDownStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span
+                style={{
+                  color: Colors.palette.primary.main,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Job Freshness
+              </span>
+              <ArrowDropDown style={arrowDownStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span
+                style={{
+                  color: Colors.palette.primary.main,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                All Filters
+              </span>
+              <ArrowDropDown style={arrowDownStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Box
+              sx={{
+                ...smallLayoutStyles,
+                ...(isSmallScreen && smallLayoutStylesResponsive),
+              }}
+            >
+              <span style={{ color: Colors.palette.primary.main }}>
+                Reset All
+              </span>
+            </Box>
+          </Grid>
+        </Grid>
       </Box>
 
-      <Grid container spacing={1}>
+      {/* xs={isSmallScreen ? 12 : 6} */}
+      <Grid container spacing={2}>
         <Grid item xs={isSmallScreen ? 12 : 6}>
           {/* Content for the left side */}
           <Box sx={layoutStyles2}>
             <Typography
-              style={{ color: "black", marginRight: "8px", fontWeight: "500" }}
+              style={{
+                color: Colors.palette.primary.main,
+                marginRight: "8px",
+                fontWeight: "500",
+              }}
             >
               Send me Jobs for this Search
             </Typography>
-            <Switch style={{ color: "#6973FE" }} />
+            <Switch style={{ color: Colors.palette.background.default }} />
           </Box>
           <Typography style={{ marginLeft: "46px", marginTop: "10px" }}>
             Showing 30 results for "Graphic Designer"
           </Typography>
 
           {/* Box 1 */}
-          <Box
+          {/* <Box
             style={{
               width: "auto",
               height: "auto",
               borderRadius: "33px",
-              backgroundColor: "#7797FE",
+              backgroundColor: Colors.palette.background.card,
               paddingLeft: "70px",
               paddingTop: "17px",
               paddingBottom: "17px",
               margin: "30px",
-              color: "white",
+              color: Colors.palette.primary.color,
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
             }}
           >
@@ -464,19 +485,42 @@ const JobDetails = () => {
             <Typography>0-0 INR</Typography>
             <br />
             <Typography>13 days ago</Typography>
-          </Box>
+          </Box> */}
+          <Card
+            style={{
+              width: "auto",
+              height: "auto",
+              borderRadius: "33px",
+              backgroundColor: Colors.palette.background.card,
+              margin: "30px",
+              color: Colors.palette.primary.color,
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            <CardContent sx={{ margin: "20px" }}>
+              <Typography variant="h6">Animator</Typography>
+              <Typography>KEYWORDS STUDIOS</Typography>
+              <br />
+              <Typography>Full time</Typography>
+              <Typography>Gurgaon / Gurugram, India</Typography>
+              <Typography>0-0 INR</Typography>
+              <br />
+              <Typography>13 days ago</Typography>
+            </CardContent>
+          </Card>
 
-          <Box
+          {/* commit */}
+          {/* <Box
             style={{
               width: "auto",
               height: "auto",
               borderRadius: "33px",
-              backgroundColor: "#7797FE",
+              backgroundColor: Colors.palette.background.card,
               paddingLeft: "70px",
               paddingTop: "17px",
               paddingBottom: "17px",
               margin: "30px",
-              color: "white",
+              color: Colors.palette.primary.color,
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
             }}
           >
@@ -488,19 +532,42 @@ const JobDetails = () => {
             <Typography>0-0 INR</Typography>
             <br />
             <Typography>13 days ago</Typography>
-          </Box>
+          </Box> */}
+          {/* Hii how are you */}
+          <Card
+            style={{
+              width: "auto",
+              height: "auto",
+              borderRadius: "33px",
+              backgroundColor: Colors.palette.background.card,
+              margin: "30px",
+              color: Colors.palette.primary.color,
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            <CardContent sx={{ margin: "20px" }}>
+              <Typography variant="h6">Animator</Typography>
+              <Typography>KEYWORDS STUDIOS</Typography>
+              <br />
+              <Typography>Full time</Typography>
+              <Typography>Gurgaon / Gurugram, India</Typography>
+              <Typography>0-0 INR</Typography>
+              <br />
+              <Typography>13 days ago</Typography>
+            </CardContent>
+          </Card>
 
-          <Box
+          {/* <Box
             style={{
               width: "auto",
               height: "auto",
               borderRadius: "33px",
-              backgroundColor: "#7797FE",
+              backgroundColor: Colors.palette.background.card,
               paddingLeft: "70px",
               paddingTop: "17px",
               paddingBottom: "17px",
               margin: "30px",
-              color: "white",
+              color: Colors.palette.primary.color,
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
             }}
           >
@@ -512,19 +579,41 @@ const JobDetails = () => {
             <Typography>0-0 INR</Typography>
             <br />
             <Typography>13 days ago</Typography>
-          </Box>
+          </Box> */}
+          <Card
+            style={{
+              width: "auto",
+              height: "auto",
+              borderRadius: "33px",
+              backgroundColor: Colors.palette.background.card,
+              margin: "30px",
+              color: Colors.palette.primary.color,
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            <CardContent sx={{ margin: "20px" }}>
+              <Typography variant="h6">Animator</Typography>
+              <Typography>KEYWORDS STUDIOS</Typography>
+              <br />
+              <Typography>Full time</Typography>
+              <Typography>Gurgaon / Gurugram, India</Typography>
+              <Typography>0-0 INR</Typography>
+              <br />
+              <Typography>13 days ago</Typography>
+            </CardContent>
+          </Card>
 
-          <Box
+          {/* <Box
             style={{
               width: "auto",
               height: "auto",
               borderRadius: "33px",
-              backgroundColor: "#7797FE",
+              backgroundColor: Colors.palette.background.card,
               paddingLeft: "70px",
               paddingTop: "17px",
               paddingBottom: "17px",
               margin: "30px",
-              color: "white",
+              color: Colors.palette.primary.color,
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
             }}
           >
@@ -536,19 +625,41 @@ const JobDetails = () => {
             <Typography>0-0 INR</Typography>
             <br />
             <Typography>13 days ago</Typography>
-          </Box>
-
+          </Box> */}
+          <Card
+            style={{
+              width: "auto",
+              height: "auto",
+              borderRadius: "33px",
+              backgroundColor: Colors.palette.background.card,
+              margin: "30px",
+              color: Colors.palette.primary.color,
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            <CardContent sx={{ margin: "20px" }}>
+              <Typography variant="h6">Animator</Typography>
+              <Typography>KEYWORDS STUDIOS</Typography>
+              <br />
+              <Typography>Full time</Typography>
+              <Typography>Gurgaon / Gurugram, India</Typography>
+              <Typography>0-0 INR</Typography>
+              <br />
+              <Typography>13 days ago</Typography>
+            </CardContent>
+          </Card>
+          {/* 
           <Box
             style={{
               width: "auto",
               height: "auto",
               borderRadius: "33px",
-              backgroundColor: "#7797FE",
+              backgroundColor: Colors.palette.background.card,
               paddingLeft: "70px",
               paddingTop: "17px",
               paddingBottom: "17px",
               margin: "30px",
-              color: "white",
+              color: Colors.palette.primary.color,
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
             }}
           >
@@ -560,13 +671,37 @@ const JobDetails = () => {
             <Typography>0-0 INR</Typography>
             <br />
             <Typography>13 days ago</Typography>
-          </Box>
+          </Box> */}
+          <Card
+            style={{
+              width: "auto",
+              height: "auto",
+              borderRadius: "33px",
+              backgroundColor: Colors.palette.background.card,
+              margin: "30px",
+              color: Colors.palette.primary.color,
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            <CardContent sx={{ margin: "20px" }}>
+              <Typography variant="h6">Animator</Typography>
+              <Typography>KEYWORDS STUDIOS</Typography>
+              <br />
+              <Typography>Full time</Typography>
+              <Typography>Gurgaon / Gurugram, India</Typography>
+              <Typography>0-0 INR</Typography>
+              <br />
+              <Typography>13 days ago</Typography>
+            </CardContent>
+          </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={isSmallScreen ? 12 : 6}>
           {/* Content for the right side */}
           <Box sx={layoutStyles2} style={{ width: "auto" }}>
-            <Typography style={{ color: "black", marginRight: "8px" }}>
+            <Typography
+              style={{ color: Colors.palette.primary.main, marginRight: "8px" }}
+            >
               Animator <br /> KEYWORDS STUDIOS
             </Typography>
             <Button
@@ -579,163 +714,216 @@ const JobDetails = () => {
             </Button>
           </Box>
 
-          {/* Box 1 */}
           <Box
-            style={{
-              width: "auto",
-              height: "69px",
-              border: "1px solid #7797FE",
-              borderRadius: "54px",
-              margin: "30px",
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-              paddingInline: "10px",
-              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+            sx={{
+              ml: { xs: "-10%", sm: "0px", md: "0px", xl: "0px", lg: "0px" },
             }}
           >
-            <Typography>Highlights</Typography>
-            <Typography>Job Description</Typography>
-            <Typography>More Info</Typography>
-            <Typography>Recuiter Information</Typography>
+            <Box
+              style={{
+                width: "90%",
+                maxWidth: "600px",
+                height: "auto",
+                border: "1px solid #7797FE",
+                borderRadius: "54px",
+                margin: "30px",
+                alignItems: "center",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                padding: "10px",
+                boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+                gap: "10px",
+                ml: {
+                  xs: "-50%",
+                  sm: "none",
+                  md: "none",
+                  xl: "none",
+                  lg: "none",
+                },
+              }}
+            >
+              <Typography variant="p">Highlights</Typography>&nbsp;
+              <Typography variant="p">Job Description</Typography>
+              <Typography variant="p"> More Info</Typography>
+              <Typography variant="p"> Recruiter Information</Typography>
+            </Box>
           </Box>
-
-          <Box
+          {/* <Box
             style={{
               width: "auto",
               height: "165px",
-              backgroundColor: "#7797FE",
+              backgroundColor: Colors.palette.background.card,
               borderRadius: "17px",
               margin: "30px",
               display: "flex",
               justifyContent: "space-evenly",
               alignItems: "center",
               paddingInline: "10px",
-              color: "white",
+              color: Colors.palette.primary.color,
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
               fontSize: "18px",
             }}
           >
             Gurgaon / Gurugram, India
             <br /> 0 - 0 Years <br /> 13 days ago <br /> 2 Applied
-          </Box>
-          <Box
+          </Box> */}
+          <Card
             style={{
               width: "auto",
-              height: "61px",
-              backgroundColor: "#CCFFCC",
+              height: "auto",
+              borderRadius: "33px",
+              backgroundColor: Colors.palette.background.card,
+              margin: "30px",
+              color: Colors.palette.primary.color,
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            <CardContent sx={{ textAlign: "center" }}>
+              Gurgaon / Gurugram, India
+              <br /> 0 - 0 Years <br /> 13 days ago <br /> 2 Applied
+            </CardContent>
+          </Card>
+
+          <Box
+            style={{
+              width: "90%",
+              height: "auto",
+              backgroundColor: Colors.palette.primary.backgroundjob,
               borderRadius: "17px",
               margin: "30px",
               display: "flex",
-              justifyContent: "space-between",
+              flexDirection: "column",
               alignItems: "center",
-              paddingInline: "10px",
+              padding: "10px",
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
               fontSize: "14px",
               gap: "5px",
               fontWeight: "600",
             }}
           >
-            <p>
+            <p style={{ textAlign: "center" }}>
               Get notified for jobs based on your search when they are posted
             </p>
-            <p style={{ color: "#7797FE" }}>Send Similar Jobs</p>
-            <Switch />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <p
+                style={{
+                  color: Colors.palette.background.card,
+                  marginRight: "10px",
+                }}
+              >
+                Send Similar Jobs
+              </p>
+              <Switch />
+            </div>
           </Box>
-          <p
-            style={{
-              fontSize: "18px",
-              fontWeight: "700",
-              marginTop: "20px",
-              marginLeft: "40px",
-              marginBottom: "8px",
-            }}
-          >
-            Job Description:
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "40px",
-              marginBottom: "4px",
-            }}
-          >
-            - Able to work in good coordination with production managers and
-            engineers.
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "40px",
-              marginBottom: "4px",
-            }}
-          >
-            - Capable of generating new ideas.
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "40px",
-              marginBottom: "4px",
-            }}
-          >
-            - Should have hands-on experience with Photoshop and Illustrator.
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "40px",
-              marginBottom: "4px",
-            }}
-          >
-            - Should have experience with logo design, corporate brand identity
-            design, web UI
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "40px",
-              marginBottom: "4px",
-            }}
-          >
-            - Identify and troubleshoot UX problems.
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "40px",
-              marginBottom: "4px",
-            }}
-          >
-            - Discuss the idea with the internal team.
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "40px",
-              marginBottom: "4px",
-            }}
-          >
-            - Knowledge about style standards on fonts, colors, and images.
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "40px",
-              marginBottom: "4px",
-            }}
-          >
-            - Develop UI mockups and prototypes.
-          </p>
-
+          <Box>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12}>
+                <p
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginTop: "20px",
+                    marginLeft: "40px",
+                    marginBottom: "8px",
+                  }}
+                >
+                  Job Description:
+                </p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "40px",
+                    marginBottom: "4px",
+                  }}
+                >
+                  - Able to work in good coordination with production managers
+                  and engineers.
+                </p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "40px",
+                    marginBottom: "4px",
+                  }}
+                >
+                  - Capable of generating new ideas.
+                </p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "40px",
+                    marginBottom: "4px",
+                  }}
+                >
+                  - Should have hands-on experience with Photoshop and
+                  Illustrator.
+                </p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "40px",
+                    marginBottom: "4px",
+                  }}
+                >
+                  - Should have experience with logo design, corporate brand
+                  identity design, web UI
+                </p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "40px",
+                    marginBottom: "4px",
+                  }}
+                >
+                  - Identify and troubleshoot UX problems.
+                </p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "40px",
+                    marginBottom: "4px",
+                  }}
+                >
+                  - Discuss the idea with the internal team.
+                </p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "40px",
+                    marginBottom: "4px",
+                  }}
+                >
+                  - Knowledge about style standards on fonts, colors, and
+                  images.
+                </p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "40px",
+                    marginBottom: "4px",
+                  }}
+                >
+                  - Develop UI mockups and prototypes.
+                </p>
+              </Grid>
+            </Grid>
+          </Box>
           <p
             style={{
               fontSize: "18px",
@@ -812,11 +1000,11 @@ const JobDetails = () => {
               width: "auto",
               height: "178px",
               borderRadius: "17px",
-              backgroundColor: "#7797FE",
+              backgroundColor: Colors.palette.background.card,
               paddingLeft: "20px",
               paddingTop: "17px",
               margin: "30px",
-              color: "white",
+              color: Colors.palette.primary.color,
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
               marginBottom: "20px",
               fontSize: "14px",
@@ -856,16 +1044,16 @@ const JobDetails = () => {
                 width: { xs: "auto", md: "70px" },
                 height: "35px",
                 borderRadius: "15px",
-                backgroundColor: "#CCFFCC",
+                backgroundColor: Colors.palette.primary.backgroundjob,
                 boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
-                color: "black",
-                marginRight: "10px",
+                color: Colors.palette.primary.main,
+                marginRight: "6%",
                 textTransform: "capitalize ",
                 fontWeight: "600",
                 fontSize: "12px",
                 "&:hover": {
-                  color: "white",
-                  backgroundColor: "#7797FE",
+                  color: Colors.palette.primary.color,
+                  backgroundColor: Colors.palette.background.card,
                 },
               }}
             >
@@ -910,16 +1098,17 @@ const JobDetails = () => {
                 width: { xs: "100%", md: "70px" },
                 height: "35px",
                 borderRadius: "15px",
-                backgroundColor: "#CCFFCC",
+                backgroundColor: Colors.palette.primary.backgroundjob,
                 boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
-                color: "black",
+                color: Colors.palette.primary.main,
                 marginRight: "10px",
+                marginLeft: "35%",
                 textTransform: "capitalize ",
                 fontWeight: "600",
                 fontSize: "12px",
                 "&:hover": {
-                  color: "white",
-                  backgroundColor: "#7797FE",
+                  color: Colors.palette.primary.color,
+                  backgroundColor: Colors.palette.background.card,
                 },
               }}
             >
@@ -933,16 +1122,17 @@ const JobDetails = () => {
                 width: { xs: "100%", md: "70px" },
                 height: "35px",
                 borderRadius: "15px",
-                backgroundColor: "#CCFFCC",
+                backgroundColor: Colors.palette.primary.backgroundjob,
                 boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
-                color: "black",
-                marginRight: "10px",
+                color: Colors.palette.primary.main,
+                marginRight: "100%",
+                //marginLeft:"35%",
                 textTransform: "capitalize ",
                 fontWeight: "600",
                 fontSize: "12px",
                 "&:hover": {
-                  color: "white",
-                  backgroundColor: "#7797FE",
+                  color: Colors.palette.primary.color,
+                  backgroundColor: Colors.palette.background.card,
                 },
               }}
             >

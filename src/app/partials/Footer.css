@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
 }
@@ -8,6 +8,7 @@
     min-height: 60vh;
     background-size: cover;
     background-repeat: no-repeat;
+    /* background: linear-gradient(360deg, #2c367f, #c0c0d8);
   }
 
 
@@ -55,8 +56,7 @@ h4{
   margin-top: 20px;
 }
 
-/* Assuming you have a class name "bottom-line" for the <div> element */
-.bottom-text h4{
+/* Assuming you have a class name "bottom-line" for the <div> element 
   color: white;
   font: weight 5px;
   line-height: 30px;
@@ -64,7 +64,7 @@ h4{
   margin-right: 30px;
 }
 
-/* Media query for small screens */
+/* Media query for small screens 
 @media (max-width: 768px) {
   .footer{
     display: flex;
@@ -143,4 +143,4 @@ h4{
   .bottom-text {
     font-size: 10px;
   }
-}
+}  */

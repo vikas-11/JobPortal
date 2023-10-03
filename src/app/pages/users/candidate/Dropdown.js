@@ -48,7 +48,7 @@ const App = () => {
               </Button>
             </ListItem>
             <Container>
-              <Typography variant="body1" className="text">Active recruiter</Typography>
+              <Typography variant="body1" className="text">Active recruiter </Typography>
               <Typography variant="body1" className="text">Pending recruiter</Typography>
               <Typography variant="body1" className="text">Edit recruiter</Typography>
               <Typography variant="body1" className="text">Posted Job list</Typography>

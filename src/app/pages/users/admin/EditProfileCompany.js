@@ -3,11 +3,11 @@ import { Grid } from "@mui/material";
 import { Container, TextField, Button, useMediaQuery } from "@mui/material";
 import Box from "@mui/material/Box";
 
-import "../admin/EditProfileCompany.css";
-import img from "../../../assets/img/users/User.png";
+// import "../admin/EditProfileCompany.css";
+import img from "../../../assets/img/users/User.jpg";
 import Navbar from "../../../partials/Navbar.js";
-import Axios from "../../../utils/axios";
-
+// import Axios from "../../../utils/axios";
+import { Link } from "react-router-dom";
 const textFeild = {
   width: "100%",
   height: "50px",
@@ -65,15 +65,16 @@ export default function PostAJob() {
 
   return (
     <>
-      <div className="home-container">
-        <Navbar />
+      <div >
+        {/* <Navbar /> */}
+        <br /><br />
       </div>
       <Container>
         <Grid container spacing={2}>
 
           <Grid item xs={12} md={4}>
             <Box sx={{ ...boxStyles, height: '160px' }}>
-              <img src={img} alt="" />
+              {/* <img src={img} alt="" /> */}
               <h3>Lorem Ipsum</h3>
             </Box>
           </Grid>
@@ -81,14 +82,14 @@ export default function PostAJob() {
           <Grid item xs={12} md={8}>
             <Grid container rowSpacing={4} columnSpacing={8}>
               <Grid item xs={12} md={12}>
-                <TextField
-                  label="Company Information"
-                  variant="outlined"
-                  fullWidth
-                  InputProps={{
-                    style: textFeild,
-                  }}
-                />
+              <TextField
+            label="Company Information"
+            id="year"
+            name="year"
+            variant="outlined"
+            fullWidth
+            InputProps={{ sx: { borderRadius: "33px" } }}
+          />
               </Grid>
 
               <Grid item xs={12} md={12}>
@@ -96,9 +97,7 @@ export default function PostAJob() {
                   label="Company's Name"
                   variant="outlined"
                   fullWidth
-                  InputProps={{
-                    style: textFeild,
-                  }}
+                  InputProps={{ sx: { borderRadius: "33px" } }}
                 />
               </Grid>
               
@@ -107,9 +106,7 @@ export default function PostAJob() {
                   label="Company Domain"
                   variant="outlined"
                   fullWidth
-                  InputProps={{
-                    style: textFeild,
-                  }}
+                  InputProps={{ sx: { borderRadius: "33px" } }}
                 />
               </Grid>
             </Grid>
@@ -119,9 +116,7 @@ export default function PostAJob() {
               label="Contact Information"
               variant="outlined"
               fullWidth
-              InputProps={{
-                style: textFeild,
-              }}
+              InputProps={{ sx: { borderRadius: "33px" } }}
             />
           </Grid>
           <Grid item xs={12} md={6}>
@@ -129,9 +124,7 @@ export default function PostAJob() {
               label="+91"
               variant="outlined"
               fullWidth
-              InputProps={{
-                style: textFeild,
-              }}
+              InputProps={{ sx: { borderRadius: "33px" } }}
             />
           </Grid>
           <Grid item xs={12} md={6}>
@@ -139,9 +132,7 @@ export default function PostAJob() {
               label="State"
               variant="outlined"
               fullWidth
-              InputProps={{
-                style: textFeild,
-              }}
+              InputProps={{ sx: { borderRadius: "33px" } }}
             />
           </Grid>
           <Grid item xs={12} md={6}>
@@ -149,9 +140,7 @@ export default function PostAJob() {
               label="Zip Code"
               variant="outlined"
               fullWidth
-              InputProps={{
-                style: textFeild,
-              }}
+              InputProps={{ sx: { borderRadius: "33px" } }}
             />
           </Grid>
           <Grid item xs={12} md={12}>
@@ -159,9 +148,7 @@ export default function PostAJob() {
               label="Address"
               variant="outlined"
               fullWidth
-              InputProps={{
-                style: textFeild,
-              }}
+              InputProps={{ sx: { borderRadius: "33px" } }}
             />
           </Grid>
           <Grid item xs={12} md={12}>
@@ -169,9 +156,7 @@ export default function PostAJob() {
               label="Opportunity ERI.com"
               variant="outlined"
               fullWidth
-              InputProps={{
-                style: textFeild,
-              }}
+              InputProps={{ sx: { borderRadius: "33px" } }}
             />
           </Grid>
           <Grid item xs={12} md={12}>
@@ -184,7 +169,10 @@ export default function PostAJob() {
                   ...(isSmallScreen && outlinedButtonResponsive),
                 }}
               >
-                Edit Profile
+                <Link to="/postajob">
+                Continue
+                </Link>
+                  
               </Button>
             </div>
           </Grid>
